@@ -5,7 +5,6 @@ import React, {
   useEffect,
   useRef,
   useCallback,
-  MouseEvent,
 } from 'react'
 import Link from 'next/link'
 import { IoMdMenu, IoMdClose } from 'react-icons/io'

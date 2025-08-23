@@ -78,7 +78,7 @@ const About = () => {
 
             <div className={styles.cta}>
               <Button href="/contact" variant="primary">
-                Let's Work Together
+                Let&apos;s Work Together
               </Button>
               <Button href="/work" variant="secondary">
                 View Our Portfolio
