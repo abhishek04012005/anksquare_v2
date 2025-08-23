@@ -5,7 +5,7 @@ import styles from './About.module.css'
 import Image from 'next/image'
 import Heading from '@/custom/heading/Heading'
 import Button from '@/custom/buttons/Button'
-import { features } from '../json/about'
+import { features } from '../../json/about'
 
 
 const About = () => {
