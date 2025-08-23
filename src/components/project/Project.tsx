@@ -103,7 +103,7 @@ const Project = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className={styles.categories}
           >
-            {workCategories.map((category, index) => (
+            {workCategories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}

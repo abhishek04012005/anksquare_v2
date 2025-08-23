@@ -6,7 +6,6 @@ import Image from 'next/image'
 import Heading from '@/custom/heading/Heading'
 import Button from '@/custom/buttons/Button'
 import { features } from '../json/about'
-import BackgroundPattern from '@/custom/background/Background'
 
 
 const About = () => {
