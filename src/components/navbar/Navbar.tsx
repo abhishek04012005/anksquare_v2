@@ -12,7 +12,6 @@ import { MdKeyboardArrowDown } from 'react-icons/md'
 import clsx from 'clsx'
 import styles from './Navbar.module.css'
 
-// --- 1. Strongly-typed menu items ----------------------------------------------------------------
 
 interface LinkItem {
   name: string
