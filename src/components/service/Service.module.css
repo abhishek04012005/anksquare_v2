@@ -55,6 +55,15 @@
     transition: transform 0.3s ease;
 }
 
+.cta {
+    display: flex;
+    gap: 1rem;
+}
+
+.cta .buttonItem {
+    width: 100%;
+}
+
 .serviceCard:hover .serviceImage {
     transform: scale(1.05);
 }
@@ -139,6 +148,10 @@
 
     .serviceDescription {
         font-size: 1rem;
+    }
+
+    .cta {
+        flex-direction: column;
     }
 
     .featureList li {

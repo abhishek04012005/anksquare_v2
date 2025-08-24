@@ -1,8 +1,11 @@
 .hero {
   position: relative;
   padding: 8rem 1.5rem 4rem;
-  background: linear-gradient(135deg, #fff7f2, #ffffff);
   overflow: hidden;
+  background-image: url(../../assets/hero2.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .container {

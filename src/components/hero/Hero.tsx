@@ -21,13 +21,13 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className={styles.textContent}
           >
-            <h1 className={styles.title}>
-              Transform Your Vision Into
-              <span className={styles.highlight}> Digital Reality</span>
+             <h1 className={styles.title}>
+              Empowering Business Through{' '}
+              <span className={styles.highlight}>Digital Innovation</span>
             </h1>
             <p className={styles.description}>
-              We create stunning digital solutions for businesses, education, and events.
-              From websites to digital cards, we bring your ideas to life.
+              We create cutting-edge digital solutions that transform businesses 
+              and drive success in the modern digital landscape.
             </p>
             <div className={styles.cta}>
               <Button href="/work" variant="primary">

@@ -5,6 +5,7 @@ import Project from "@/components/project/Project";
 import Services from "@/components/service/Service";
 import Testimonial from "@/components/testimonial/Testimonial";
 import Blog from "@/components/blog/Blog";
+import Clients from "@/components/clients/Clients";
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Services />
       <Project />
       <Blog />
+      <Clients />
       <Testimonial />
       <Contact />
     </div>

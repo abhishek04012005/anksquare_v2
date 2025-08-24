@@ -1,0 +1,299 @@
+.clientSection {
+    padding: 6rem 0;
+    background: var(--background-gradient);
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.sectionHeader {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.titleAccent {
+    color: var(--primary-color);
+    position: relative;
+}
+
+.titleAccent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.sectionTitle:hover .titleAccent::after {
+    transform: scaleX(1);
+}
+
+.headerLine {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    margin: 1.5rem auto;
+}
+
+.sectionDescription {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.sliderContainer {
+    position: relative;
+    padding: 0 40px;
+    margin-top: 2rem;
+}
+
+.swiper {
+    padding: 20px 0;
+    overflow: visible;
+}
+
+.navigationButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 15px rgba(245, 190, 145, 0.2);
+}
+
+.navigationButton:hover {
+    background: #333;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.prevButton {
+    left: -20px;
+}
+
+.nextButton {
+    right: -20px;
+}
+
+.clientCard {
+    background: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(245, 190, 145, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    border: 1px solid rgba(245, 190, 145, 0.1);
+    border: 1px solid var(--primary-color);
+
+}
+
+.clientCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(245, 190, 145, 0.2);
+    border-color: rgba(245, 190, 145, 0.3);
+}
+
+.logoContainer {
+    width: 120px;
+    height: 60px;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.clientLogo {
+    object-fit: contain;
+    /* filter: grayscale(100%); */
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.clientCard:hover .clientLogo {
+    /* filter: grayscale(0%); */
+    opacity: 1;
+}
+
+.clientCard:hover .logoContainer {
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(245, 190, 145, 0.15);
+}
+
+.clientInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.clientName {
+    color: #333;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.projectType {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.testimonialWrapper {
+    position: relative;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(245, 190, 145, 0.2);
+}
+
+.quoteIcon {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+    transition: transform 0.3s ease;
+}
+
+.clientCard:hover .quoteIcon {
+    transform: rotate(-10deg);
+}
+
+.testimonial {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* Swiper overrides */
+.swiper-slide {
+    height: auto;
+    opacity: 0.5;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+}
+
+.swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .sliderContainer {
+        padding: 0 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .clientSection {
+        padding: 4rem 0;
+    }
+
+    .sectionTitle {
+        font-size: 2rem;
+    }
+
+    .sliderContainer {
+        padding: 0 30px;
+    }
+
+    .navigationButton {
+        width: 35px;
+        height: 35px;
+    }
+
+    .clientCard {
+        padding: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .clientCard {
+        padding: 1.5rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.75rem;
+    }
+
+    .sliderContainer {
+        padding: 0 25px;
+    }
+
+    .navigationButton {
+        width: 30px;
+        height: 30px;
+    }
+
+    .logoContainer {
+        width: 100px;
+        height: 50px;
+    }
+
+    .clientName {
+        font-size: 1.1rem;
+    }
+
+    .testimonial {
+        font-size: 0.9rem;
+    }
+}

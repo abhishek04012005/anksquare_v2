@@ -9,7 +9,7 @@ import Button from '@/custom/buttons/Button'
 import ServImage1 from "../../assets/services/serv1.jpg"
 import ServImage2 from "../../assets/services/serv2.jpg"
 import ServImage3 from "../../assets/services/serv3.jpg"
-import ServImage4 from "../../assets/services/serv4.jpg"    
+import ServImage4 from "../../assets/services/serv4.jpg"
 import ServImage5 from "../../assets/services/serv5.jpg"
 import ServImage6 from "../../assets/services/serv6.jpg"
 import ServImage7 from "../../assets/services/serv7.jpg"
@@ -199,7 +199,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isReversed, index })
                         </motion.li>
                     ))}
                 </ul>
-                <Button href={service.path} variant='primary'>View More</Button>
+                <div className={styles.cta}>
+                    <Button href={service.path} className={styles.buttonItem} variant='primary'>View More</Button>
+                    <Button href={service.path} className={styles.buttonItem} variant='secondary'>Get Quote</Button>
+                </div>
             </div>
         </motion.div>
     )
