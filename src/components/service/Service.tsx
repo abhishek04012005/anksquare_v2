@@ -6,13 +6,22 @@ import { useInView } from 'react-intersection-observer'
 import styles from './Service.module.css'
 import Heading from '@/custom/heading/Heading'
 import Button from '@/custom/buttons/Button'
+import ServImage1 from "../../assets/services/serv1.jpg"
+import ServImage2 from "../../assets/services/serv2.jpg"
+import ServImage3 from "../../assets/services/serv3.jpg"
+import ServImage4 from "../../assets/services/serv4.jpg"    
+import ServImage5 from "../../assets/services/serv5.jpg"
+import ServImage6 from "../../assets/services/serv6.jpg"
+import ServImage7 from "../../assets/services/serv7.jpg"
+
+import type { StaticImageData } from 'next/image'
 
 interface ServiceItem {
     id: number
     title: string
     description: string
     features: string[]
-    image: string
+    image: string | StaticImageData
     path: string
 }
 
@@ -34,7 +43,7 @@ const services: ServiceItem[] = [
             'E-commerce Solutions',
             'User Experience Design'
         ],
-        image: '/services/digital-identity.webp',
+        image: ServImage1,
         path: '/services/digital-identity'
     },
     {
@@ -48,7 +57,7 @@ const services: ServiceItem[] = [
             'Print Media Design',
             'Brand Guidelines'
         ],
-        image: '/services/branding.webp',
+        image: ServImage2,
         path: '/services/branding'
     },
     {
@@ -62,7 +71,7 @@ const services: ServiceItem[] = [
             'Review Management',
             'Local Content Strategy'
         ],
-        image: '/services/seo.webp',
+        image: ServImage3,
         path: '/services/seo'
     },
     {
@@ -76,7 +85,7 @@ const services: ServiceItem[] = [
             'Social Media Analytics',
             'Campaign Management'
         ],
-        image: '/services/social-media.webp',
+        image: ServImage4,
         path: '/services/social-media'
     },
     {
@@ -90,7 +99,7 @@ const services: ServiceItem[] = [
             'CRM Integration',
             'Sales Funnel Optimization'
         ],
-        image: '/services/lead-gen.webp',
+        image: ServImage5,
         path: '/services/lead-gn'
     },
     {
@@ -104,7 +113,7 @@ const services: ServiceItem[] = [
             'Virtual Tours',
             'Interactive Media'
         ],
-        image: '/services/multimedia.webp',
+        image: ServImage6,
         path: '/services/multimedia'
     },
     {
@@ -118,7 +127,7 @@ const services: ServiceItem[] = [
             'Resource Library',
             'Maintenance Services'
         ],
-        image: '/services/education.webp',
+        image: ServImage7,
         path: '/services/education'
     }
 ]
