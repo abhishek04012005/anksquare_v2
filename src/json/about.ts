@@ -1,9 +1,7 @@
-// features.ts
-
 export type Feature = {
   title: string
   description: string
-  icon: string // You could use a union of emoji strings if you want stricter control
+  icon: string 
 }
 
 export const features: Feature[] = [
