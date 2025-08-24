@@ -6,7 +6,7 @@ import styles from './Project.module.css'
 import Heading from '@/custom/heading/Heading'
 import Button from '@/custom/buttons/Button'
 import ProImage1 from "../../assets/projects/pro1.jpg"
-import ProImage2 from "../../assets/projects/pro2.avif"
+import ProImage2 from "../../assets/projects/pro2.png"
 import ProImage3 from "../../assets/projects/pro3.png"
 
 const workCategories = [
