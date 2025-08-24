@@ -5,6 +5,9 @@ import { motion } from 'framer-motion'
 import styles from './Project.module.css'
 import Heading from '@/custom/heading/Heading'
 import Button from '@/custom/buttons/Button'
+import ProImage1 from "../../assets/projects/pro1.jpg"
+import ProImage2 from "../../assets/projects/pro2.avif"
+import ProImage3 from "../../assets/projects/pro3.png"
 
 const workCategories = [
   {
@@ -30,7 +33,7 @@ const workProjects = [
     id: 1,
     title: 'Business Portfolio',
     category: 'business',
-    image: '/work/business-portfolio.webp',
+    image: ProImage1,
     description: 'Modern business portfolio website with dynamic features',
     link: '/work/business/portfolio'
   },
@@ -38,7 +41,7 @@ const workProjects = [
     id: 2,
     title: 'Digital Resume Platform',
     category: 'education',
-    image: '/work/digital-resume.webp',
+    image: ProImage2,
     description: 'Interactive digital resume builder for professionals',
     link: '/work/education/resume'
   },
@@ -46,7 +49,7 @@ const workProjects = [
     id: 3,
     title: 'Wedding Website',
     category: 'events',
-    image: '/work/wedding-website.webp',
+    image: ProImage3,
     description: 'Elegant wedding invitation and event management platform',
     link: '/work/events/wedding/website'
   },

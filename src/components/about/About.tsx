@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Heading from '@/custom/heading/Heading'
 import Button from '@/custom/buttons/Button'
 import { features } from '../../json/about'
+import AboutImage from "../../assets/about/about.jpg"
 
 
 const About = () => {
@@ -33,7 +34,7 @@ const About = () => {
           >
             <div className={styles.imageBorder}>
               <Image
-                src="/about-image.webp"
+                src={AboutImage}
                 alt="Our Work Culture"
                 width={500}
                 height={600}
