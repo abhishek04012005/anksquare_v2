@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { IoMdMenu, IoMdClose } from 'react-icons/io';
 import clsx from 'clsx';
 import styles from './Navbar.module.css';
+import Image from 'next/image';
 
 interface LinkItem {
   name: string;
@@ -59,7 +60,7 @@ const Navbar: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.navContent}>
           <Link href="/" className={styles.logo}>
-            <span className={styles.logoText}>Ditvi</span> Technologies
+            <Image className={styles.logoImage} src="/blog/blockchain-loyalty.webp" alt="Ditvi Technologies" height={40} width={160} />
           </Link>
 
           {/* Desktop Menu */}

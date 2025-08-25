@@ -26,22 +26,19 @@
 .logo {
   display: flex;
   align-items: center;
-  font-weight: 800;
-  font-size: 1.75rem;
-  text-decoration: none;
-  color: #333;
-  transition: all 0.3s ease;
-  letter-spacing: -0.5px;
+  height: auto;
+  width: 100;
 }
 
-.logoText {
-  color: #ff6000;
-  margin-right: 0.35rem;
-}
 
 .logo:hover {
   transform: translateY(-1px);
   color: #ff6000;
+}
+
+.logoImage {
+    width: 100%;
+    height: auto;
 }
 
 .desktopMenu {
