@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.navContent}>
           <Link href="/" className={styles.logo}>
-            <Image src={Logo} alt="Ditvi Technologies" className={styles.logoImage} height={40} width={160} />
+            <Image src={Logo} alt="Ditvi Technologies" className={styles.logoImage}  />
           </Link>
 
  
