@@ -5,6 +5,8 @@ import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 import styles from './Footer.module.css'
 import { socialLinks } from '@/json/ditviinfo'
 import { contactDetails } from '@/json/ditviinfo'
+import Logo from "../../assets/logo.png";
+
 
 const quickLinks = [
     { name: 'Home', href: '/' },
@@ -35,10 +37,10 @@ const Footer = () => {
                     <div className={styles.companyInfo}>
                         <Link href="/" className={styles.logo}>
                             <Image
-                                src="/logo.png"
+                                src={Logo}
                                 alt="Ditvi Technologies"
-                                width={150}
-                                height={40}
+                                width={1000}
+                                height={1000}
                                 className={styles.logoImage}
                             />
                         </Link>
