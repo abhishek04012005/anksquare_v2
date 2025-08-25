@@ -76,6 +76,7 @@
   overflow: hidden;
   box-shadow: 0 4px 20px var(--shadow-color);
   transition: transform 0.3s ease;
+  border: 1px solid var(--primary-color);
 }
 
 .projectCard:hover {
@@ -155,6 +156,15 @@
   font-weight: 500;
 }
 
+.viewMoreButtonContainer {
+  padding: 0.5rem;
+}
+
+.viewMoreButton {
+  width: 100%;
+
+}
+
 /* Tablet and Desktop Styles */
 @media (min-width: 768px) {
   .work {
@@ -177,4 +187,3 @@
     font-size: 0.95rem;
   }
 }
-

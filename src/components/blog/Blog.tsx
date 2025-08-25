@@ -14,6 +14,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import Heading from '@/custom/heading/Heading'
 import { blogPosts, BlogPost } from '../../json/blog'
+import Button from '@/custom/buttons/Button';
 
 
 interface BlogProps {
@@ -54,10 +55,14 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
                         <span>{post.readTime}</span>
                     </div>
                 </div>
-                <Link href={`/blog/${post.slug}`} className={styles.readMore}>
+                {/* <Link href={`/blog/${post.slug}`} className={styles.readMore}>
                     Read More
                     <FaChevronRight className={styles.arrow} />
-                </Link>
+                </Link> */}
+                <Button href={`/blog/${post.slug}`} variant='primary'>
+                    Read More
+                    <FaChevronRight className={styles.arrow} />
+                </Button>
             </div>
         </motion.div>
     )

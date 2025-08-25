@@ -1,9 +1,14 @@
+import { StaticImageData } from "next/image"
+import Blog1 from "../assets/blog/1.jpg"
+import Blog2 from "../assets/blog/2.jpg"
+
+
 export interface BlogPost {
     id: number
     title: string
     excerpt: string
     content: string
-    image: string
+    image: string | StaticImageData
     author: string
     date: string
     readTime: string
@@ -14,10 +19,10 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: 'The Future of Digital Marketing in 2024',
+    title: 'The Future of Digital Marketing in 2025',
     excerpt: 'Explore the emerging trends and technologies shaping digital marketing.',
     content: 'Full blog content here...',
-    image: '/blog/future-of-digital-marketing-2024.webp',
+    image: Blog1,
     author: 'John Doe',
     date: 'Jan 15, 2024',
     readTime: '5 min read',
@@ -29,7 +34,7 @@ export const blogPosts: BlogPost[] = [
     title: 'AI-Powered Personalization: Next-Level Customer Experiences',
     excerpt: 'How machine learning is transforming one-to-one marketing at scale.',
     content: 'Full blog content here...',
-    image: '/blog/ai-personalization.webp',
+    image: Blog2,
     author: 'Jane Smith',
     date: 'Feb 02, 2024',
     readTime: '6 min read',

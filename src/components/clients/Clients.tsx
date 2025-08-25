@@ -3,13 +3,7 @@ import React, { useRef } from 'react';
 import Image from 'next/image';
 import styles from "./Clients.module.css";
 import { FaQuoteRight, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import ClientLogo1 from '../../assets/client/jpmorgan.png';
-import ClientLogo2 from '../../assets/client/gl.png';
-import ClientLogo3 from '../../assets/client/dhootap.png';
-import ClientLogo4 from '../../assets/client/indicame.png';
-import ClientLogo5 from '../../assets/client/ishwarya.png';
-import ClientLogo6 from '../../assets/client/mgm.png';
-import ClientLogo7 from '../../assets/client/alkem.png'
+import { clients } from '@/json/client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
@@ -19,57 +13,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import Heading from '@/custom/heading/Heading';
 
-const clients = [
-    {
-        id: 1,
-        name: 'Alkem',
-        logo: ClientLogo7,
-        project: 'Corporate Office Interior',
-        testimonial: 'The team delivered a sleek, functional workspace that reflects our brand’s professionalism. Truly impressive execution.'
-    },
-    {
-        id: 2,
-        name: 'Galpha Laboratory',
-        logo: ClientLogo2,
-        project: 'Laboratory Infrastructure',
-        testimonial: 'Precision and compliance were key, and they nailed both. Our lab setup is efficient, clean, and future-ready.'
-    },
-    {
-        id: 3,
-        name: 'Shree Dhootapapeshwar Ltd',
-        logo: ClientLogo3,
-        project: 'Ayurvedic Manufacturing Facility',
-        testimonial: 'Their understanding of industrial needs and traditional aesthetics was remarkable. A seamless blend of heritage and utility.'
-    },
-    {
-        id: 4,
-        name: 'Indicame Health Care',
-        logo: ClientLogo4,
-        project: 'Healthcare Office Interior',
-        testimonial: 'Smart layouts and calming design elements made our healthcare space both functional and welcoming. Highly recommended.'
-    },
-    {
-        id: 5,
-        name: 'Ishwarya Health Care Group',
-        logo: ClientLogo5,
-        project: 'Hospital Interior Design',
-        testimonial: 'They created a healing environment with thoughtful design and durable materials. Patients and staff love the transformation.'
-    },
-    {
-        id: 6,
-        name: 'MGM Hospital',
-        logo: ClientLogo6,
-        project: 'Medical Facility Renovation',
-        testimonial: 'From patient rooms to operation zones, every detail was handled with care. The result is a modern, efficient hospital space.'
-    },
-    {
-        id: 7,
-        name: 'JP Morgan',
-        logo: ClientLogo1,
-        project: 'Corporate Office Interior',
-        testimonial: 'The team delivered a sleek, functional workspace that reflects our brand’s professionalism. Truly impressive execution.'
-    },
-];
 
 
 const Clients = () => {

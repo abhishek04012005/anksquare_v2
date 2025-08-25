@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { FiArrowLeft, FiCheck } from 'react-icons/fi'
 
-import { services, ServiceItem } from '../../json/services'
+import { services, ServiceItem } from '../../../json/services'
 import Button from '@/custom/buttons/Button'
 import styles from './ServiceDetail.module.css'
 

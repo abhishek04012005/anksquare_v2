@@ -1,5 +1,5 @@
 import { services } from '../../../json/services';
-import ServiceDetail from '@/components/servicedetail/ServiceDetail';
+import ServiceDetail from '@/components/service/servicedetail/ServiceDetail';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
