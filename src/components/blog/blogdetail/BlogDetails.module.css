@@ -1,0 +1,293 @@
+.blogDetail {
+  padding: 6rem 1.5rem;
+  background: var(--background-gradient);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.breadcrumb {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--primary-hover);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  color: var(--text-secondary);
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  color: var(--primary-color);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.mainContent {
+  background: var(--card-background);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  overflow: hidden;
+}
+
+.featuredImage {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.articleContent {
+  padding: 2rem;
+}
+
+.excerpt {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.articleContent h2 {
+  font-size: 1.75rem;
+  color: var(--text-primary);
+  margin: 2rem 0 1rem;
+}
+
+.articleContent p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.articleContent ul {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.articleContent li {
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.quote {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: var(--accent-light);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 0.5rem;
+}
+
+.quote blockquote {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.quote cite {
+  color: var(--text-secondary);
+}
+
+.share {
+  padding: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.socialLinks button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.socialLinks button:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.sidebar {
+  position: sticky;
+  top: 2rem;
+}
+
+.authorCard {
+  background: var(--card-background);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.authorImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.authorCard h3 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.authorCard p {
+  color: var(--text-secondary);
+}
+
+.relatedPosts {
+  background: var(--card-background);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.relatedPosts h3 {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.relatedPost {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.relatedPost:last-child {
+  border-bottom: none;
+}
+
+.relatedImage {
+  width: 100px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.relatedInfo h4 {
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.relatedPost:hover h4 {
+  color: var(--primary-color);
+}
+
+.relatedInfo span {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .blogDetail {
+    padding: 4rem 1rem;
+  }
+
+  .meta {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .featuredImage {
+    height: 300px;
+  }
+
+  .articleContent {
+    padding: 1.5rem;
+  }
+
+  .quote {
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .share {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
