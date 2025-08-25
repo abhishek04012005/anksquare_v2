@@ -91,71 +91,82 @@ const Project = () => {
   }, [activeCategory])
 
   return (
-      <section id="work-section" className={styles.work}>
-        <div className={styles.container}>
+    <section id="work-section" className={styles.work}>
+      <div className={styles.container}>
 
-          <Heading
-            subtitle='Our Project'
-            title='Featured'
-            titleHighlight='Projects'
-          />
+        <Heading
+          subtitle='Our Project'
+          title='Featured'
+          titleHighlight='Projects'
+        />
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className={styles.categories}
-          >
-            {workCategories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`${styles.categoryButton} ${activeCategory === category.id ? styles.active : ''
-                  }`}
-              >
-                {category.name}
-              </button>
-            ))}
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className={styles.categories}
+        >
+          {workCategories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setActiveCategory(category.id)}
+              className={`${styles.categoryButton} ${activeCategory === category.id ? styles.active : ''
+                }`}
+            >
+              {category.name}
+            </button>
+          ))}
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isVisible ? 1 : 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className={styles.projectGrid}
-          >
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                className={styles.projectCard}
-              >
-                <div className={styles.projectImage}>
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={400}
-                    height={300}
-                    className={styles.image}
-                  />
-                  <div className={styles.overlay}>
-                    <Button href={project.link} variant='primary'>View Project</Button>
-                  </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isVisible ? 1 : 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className={styles.projectGrid}
+        >
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+              className={styles.projectCard}
+            >
+              <div className={styles.projectImage}>
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={400}
+                  height={300}
+                  className={styles.image}
+                />
+                <div className={styles.overlay}>
+                  <Button href={project.link} variant='primary'>View Project</Button>
                 </div>
-                <div className={styles.projectInfo}>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <p className={styles.projectDescription}>{project.description}</p>
-                  <span className={styles.projectCategory}>
-                    {workCategories.find(cat => cat.id === project.category)?.name}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+              </div>
+              <div className={styles.projectInfo}>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <p className={styles.projectDescription}>{project.description}</p>
+                <span className={styles.projectCategory}>
+                  {workCategories.find(cat => cat.id === project.category)?.name}
+                </span>
+              </div>
+              <div className={styles.viewMoreButtonContainer}>
+                <Button
+                  key={project.id}
+                  href={project.link}
+                  variant="primary"
+                  className={styles.viewMoreButton}
+                >
+                  View More
+                </Button>
+              </div>
+            </motion.div>
+
+          ))}
+        </motion.div>
+      </div>
+    </section >
   )
 }
 

@@ -4,24 +4,25 @@ import { motion } from 'framer-motion'
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 import styles from './Contact.module.css'
 import Heading from '@/custom/heading/Heading'
+import { contactDetails } from '@/json/ditviinfo'
 
 const contactInfo = [
     {
         icon: <FiMail />,
         title: 'Email Us',
-        content: 'info@ditvitechnologies.com',
-        link: 'mailto:info@ditvitechnologies.com'
+        content: contactDetails.email,
+        link: `mailto:${contactDetails.email}`
     },
     {
         icon: <FiPhone />,
         title: 'Call Us',
-        content: '+91 123 456 7890',
-        link: 'tel:+911234567890'
+        content: contactDetails.number,
+        link: `tel:${contactDetails.number}`
     },
     {
         icon: <FiMapPin />,
         title: 'Visit Us',
-        content: 'Mumbai, Maharashtra, India',
+        content: contactDetails.address,
         link: 'https://maps.google.com'
     }
 ]

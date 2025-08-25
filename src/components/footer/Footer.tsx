@@ -1,15 +1,18 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FiMail, FiPhone, FiMapPin, FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from 'react-icons/fi'
+import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 import styles from './Footer.module.css'
+import { socialLinks } from '@/json/ditviinfo'
+import { contactDetails } from '@/json/ditviinfo'
 import Logo from "../../assets/logo.png";
+
 
 const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
-    { name: 'Work', href: '/work' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
     { name: 'Admin', href: '/admin' }
 ]
@@ -22,12 +25,7 @@ const services = [
     { name: 'Lead Generation', href: '/services/lead-generation' }
 ]
 
-const socialLinks = [
-    { icon: <FiFacebook />, href: 'https://facebook.com' },
-    { icon: <FiTwitter />, href: 'https://twitter.com' },
-    { icon: <FiInstagram />, href: 'https://instagram.com' },
-    { icon: <FiLinkedin />, href: 'https://linkedin.com' }
-]
+
 
 const Footer = () => {
     const year = new Date().getFullYear()
@@ -52,15 +50,15 @@ const Footer = () => {
                         <div className={styles.contact}>
                             <div className={styles.contactItem}>
                                 <FiMail />
-                                <a href="mailto:info@ditvitechnologies.com">info@ditvitechnologies.com</a>
+                                <a href="mailto:info@ditvitechnologies.com">{contactDetails.email}</a>
                             </div>
                             <div className={styles.contactItem}>
                                 <FiPhone />
-                                <a href="tel:+911234567890">+91 123 456 7890</a>
+                                <a href={`tel:${contactDetails.number}`}>{contactDetails.number}</a>
                             </div>
                             <div className={styles.contactItem}>
                                 <FiMapPin />
-                                <span>Mumbai, Maharashtra, India</span>
+                                <span>{contactDetails.address}</span>
                             </div>
                         </div>
                     </div>

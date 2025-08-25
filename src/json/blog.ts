@@ -1,3 +1,5 @@
+
+import { StaticImageData } from "next/image"
 import BlogImage1 from "../assets/blog/blog1.jpg"
 import BlogImage2 from "../assets/blog/blog2.jpg"
 import BlogImage3 from "../assets/blog/blog3.jpg"
@@ -9,12 +11,13 @@ import BlogImage8 from "../assets/blog/blog8.jpg"
 import BlogImage9 from "../assets/blog/blog9.jpg"
 import BlogImage10 from "../assets/blog/blog10.jpg"
 
+
 export interface BlogPost {
     id: number
     title: string
     excerpt: string
     content: string
-    image: string
+    image: string | StaticImageData
     author: string
     date: string
     readTime: string
