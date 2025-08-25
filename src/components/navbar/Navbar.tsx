@@ -64,10 +64,10 @@ const Navbar: React.FC = () => {
             <Image src={Logo} alt="Ditvi Technologies" className={styles.logoImage} height={40} width={160} />
           </Link>
 
-          {/* Desktop Menu */}
+ 
           <div className={styles.desktopMenu}>{renderMenuItems(false)}</div>
 
-          {/* Mobile Toggle */}
+ 
           <button
             className={clsx(styles.mobileMenuToggle, { [styles.active]: isOpen })}
             onClick={toggleMenu}
