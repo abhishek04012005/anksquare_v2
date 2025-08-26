@@ -81,7 +81,7 @@ const About = () => {
               <Button href="/contact" variant="primary">
                 Let&apos;s Work Together
               </Button>
-              <Button href="/work" variant="secondary">
+              <Button href="/services" variant="secondary">
                 View Our Portfolio
               </Button>
 

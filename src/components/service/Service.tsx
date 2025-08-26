@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
@@ -7,6 +7,7 @@ import styles from './Service.module.css'
 import Heading from '@/custom/heading/Heading'
 import Button from '@/custom/buttons/Button'
 import { services, ServiceItem } from '../../json/services'
+import GetQuotePopup from '@/custom/getquotepopup/GetQuotePopup'
 
 
 
@@ -18,6 +19,8 @@ interface ServiceCardProps {
 
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, isReversed, index }) => {
+    const [showQuotePopup, setShowQuotePopup] = useState(false)
+
     const controls = useAnimation()
     const [ref, inView] = useInView({
         threshold: 0.2,
@@ -43,78 +46,90 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, isReversed, index })
     }
 
     return (
-        <motion.div
-            ref={ref}
-            variants={containerVariants}
-            initial="hidden"
-            animate={controls}
-            className={`${styles.serviceCard} ${isReversed ? styles.reversed : ''}`}
-        >
-            <div className={styles.imageContainer}>
-                <Image
-                    src={service.image}
-                    alt={service.title}
-                    width={600}
-                    height={400}
-                    className={styles.serviceImage}
-                    priority={index < 2}
-                />
-                <div className={styles.imageBg}></div>
-            </div>
-
-            <div className={styles.contentContainer}>
-                <h3 className={styles.serviceTitle}>{service.title}</h3>
-                <p className={styles.serviceDescription}>{service.description}</p>
-                <ul className={styles.featureList}>
-                    {service.features.map((feature, idx) => (
-                        <motion.li
-                            key={idx}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={controls}
-                            variants={{
-                                visible: {
-                                    opacity: 1,
-                                    x: 0,
-                                    transition: { delay: 0.3 + idx * 0.1 }
-                                }
-                            }}
-                        >
-                            <span className={styles.bullet}>•</span>
-                            {feature}
-                        </motion.li>
-                    ))}
-                </ul>
-                <div className={styles.cta}>
-                    <Button href={service.path} className={styles.buttonItem} variant='primary'>View More</Button>
-                    <Button href={service.path} className={styles.buttonItem} variant='secondary'>Get Quote</Button>
+        <>
+            <motion.div
+                ref={ref}
+                variants={containerVariants}
+                initial="hidden"
+                animate={controls}
+                className={`${styles.serviceCard} ${isReversed ? styles.reversed : ''}`}
+            >
+                <div className={styles.imageContainer}>
+                    <Image
+                        src={service.image}
+                        alt={service.title}
+                        width={600}
+                        height={400}
+                        className={styles.serviceImage}
+                        priority={index < 2}
+                    />
+                    <div className={styles.imageBg}></div>
                 </div>
-            </div>
-        </motion.div>
+
+                <div className={styles.contentContainer}>
+                    <h3 className={styles.serviceTitle}>{service.title}</h3>
+                    <p className={styles.serviceDescription}>{service.description}</p>
+                    <ul className={styles.featureList}>
+                        {service.features.map((feature, idx) => (
+                            <motion.li
+                                key={idx}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={controls}
+                                variants={{
+                                    visible: {
+                                        opacity: 1,
+                                        x: 0,
+                                        transition: { delay: 0.3 + idx * 0.1 }
+                                    }
+                                }}
+                            >
+                                <span className={styles.bullet}>•</span>
+                                {feature}
+                            </motion.li>
+                        ))}
+                    </ul>
+                    <div className={styles.cta}>
+                        <Button href={service.path} className={styles.buttonItem} variant='primary'>View More</Button>
+                        <Button onClick={() => setShowQuotePopup(true)} className={styles.buttonItem} variant='secondary'>Get Quote</Button>
+                    </div>
+                </div>
+            </motion.div>
+            <GetQuotePopup
+                isOpen={showQuotePopup}
+                onClose={() => setShowQuotePopup(false)}
+                selectedService={service.title}
+            />
+        </>
     )
 }
 
 const Services: React.FC = () => {
     return (
-        <section className={styles.services} id="services">
-            <div className={styles.container}>
-                <Heading
-                    subtitle='Our Services'
-                    title='Empowering Your'
-                    titleHighlight='Digital Growth'
-                ></Heading>
+        <>
+            <section className={styles.services} id="services">
+                <div className={styles.container}>
+                    <Heading
+                        subtitle='Our Services'
+                        title='Empowering Your'
+                        titleHighlight='Digital Growth'
+                    ></Heading>
 
-                <div className={styles.servicesGrid}>
-                    {services.map((service, index) => (
-                        <ServiceCard
-                            key={service.id}
-                            service={service}
-                            isReversed={index % 2 !== 0}
-                            index={index}
-                        />
-                    ))}
+                    <div className={styles.servicesGrid}>
+                        {services.map((service, index) => (
+                            <ServiceCard
+                                key={service.id}
+                                service={service}
+                                isReversed={index % 2 !== 0}
+                                index={index}
+                            />
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+
+
+        </>
     )
 }
 

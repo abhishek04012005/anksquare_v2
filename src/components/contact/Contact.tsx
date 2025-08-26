@@ -5,6 +5,7 @@ import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 import styles from './Contact.module.css'
 import Heading from '@/custom/heading/Heading'
 import { contactDetails } from '@/json/ditviinfo'
+import { supabase } from '@/supabase/supabase'
 
 const contactInfo = [
     {
@@ -30,7 +31,7 @@ const contactInfo = [
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
-        email: '',
+        number: '',
         subject: '',
         message: ''
     })
@@ -47,12 +48,32 @@ const Contact = () => {
         e.preventDefault()
         setIsSubmitting(true)
 
+        try {
+            const { error } = await supabase
+                .from('contacts')
+                .insert([
+                    {
+                        name: formData.name,
+                        number: formData.number,
+                        subject: formData.subject,
+                        message: formData.message,
+                        status: 'new'
+                    }
+                ])
 
-        setTimeout(() => {
+            if (error) throw error
+
+            // Reset form
+            setFormData({ name: '', number: '', subject: '', message: '' })
+            // Show success message (implement your own notification system)
+        } catch (error) {
+            console.error('Error submitting form:', error)
+            // Show error message
+        } finally {
             setIsSubmitting(false)
-            setFormData({ name: '', email: '', subject: '', message: '' })
-        }, 1000)
+        }
     }
+
 
     return (
         <section className={styles.contact}>
@@ -106,10 +127,10 @@ const Contact = () => {
                         </div>
                         <div className={styles.formGroup}>
                             <input
-                                type="email"
-                                name="email"
-                                placeholder="Your Email"
-                                value={formData.email}
+                                type="text"
+                                name="number"
+                                placeholder="Your Number"
+                                value={formData.number}
                                 onChange={handleChange}
                                 required
                             />

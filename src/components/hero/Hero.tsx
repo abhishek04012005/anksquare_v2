@@ -30,7 +30,7 @@ const Hero = () => {
               and drive success in the modern digital landscape.
             </p>
             <div className={styles.cta}>
-              <Button href="/work" variant="primary">
+              <Button href="/services" variant="primary">
                 Explore Our Work
               </Button>
               <Button href="/contact" variant="secondary">
