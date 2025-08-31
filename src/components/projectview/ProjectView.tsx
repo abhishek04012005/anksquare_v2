@@ -3,25 +3,28 @@ import React, { FC, useMemo, useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { FaGlobe, FaImage, FaIdCard, FaFile, FaChartLine } from 'react-icons/fa'
-import { clients, Client, ProjectWork } from '@/json/client'
+import { clients, Client } from '@/json/client'
 import styles from './ProjectView.module.css'
 
 
 interface ProjectViewProps {
-  slug: string  // Changed from params object to direct slug
+  slug: string
 }
 
 const workTypeIcons = {
+  all: FaImage,
   logo: FaImage,
   website: FaGlobe,
   visitingCard: FaIdCard,
   profile: FaFile,
-  business: FaChartLine
+  business: FaChartLine,
+  letterHead: FaFile
 }
 
 const ProjectView: FC<ProjectViewProps> = ({ slug }) => {
   const [selectedType, setSelectedType] = useState<string | null>(null)
-  
+
+
   const client = useMemo<Client | undefined>(
     () => clients.find((c) => c.slug === slug),
     [slug]
@@ -29,7 +32,7 @@ const ProjectView: FC<ProjectViewProps> = ({ slug }) => {
 
   if (!client) return <div>Project not found</div>
 
-  const filteredWork = client.workDone.filter(work => 
+  const filteredWork = client.workDone.filter(work =>
     !selectedType || work.type === selectedType
   )
 
@@ -61,9 +64,8 @@ const ProjectView: FC<ProjectViewProps> = ({ slug }) => {
             return (
               <button
                 key={type}
-                className={`${styles.typeButton} ${
-                  selectedType === type ? styles.active : ''
-                }`}
+                className={`${styles.typeButton} ${selectedType === type ? styles.active : ''
+                  }`}
                 onClick={() => setSelectedType(type)}
               >
                 <Icon />
@@ -88,14 +90,26 @@ const ProjectView: FC<ProjectViewProps> = ({ slug }) => {
               {work.images && (
                 <div className={styles.imageGrid}>
                   {work.images.map((image, i) => (
-                    <Image
-                      key={i}
-                      src={image}
-                      alt={`${work.title} ${i + 1}`}
-                      width={300}
-                      height={200}
-                      className={styles.workImage}
-                    />
+                    <div key={i} className={styles.imageContainer}>
+                      <Image
+                        src={image}
+                        alt={`${work.title} ${i + 1}`}
+                        width={1000}
+                        height={900}
+                        className={styles.workImage}
+                      />
+                      <div className={styles.imageControls}>
+                        <a
+                          href={image.src}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.imageButton}
+                          title="Open in New Tab"
+                        >
+                          <FaImage />
+                        </a>
+                      </div>
+                    </div>
                   ))}
                 </div>
               )}
