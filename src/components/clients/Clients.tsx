@@ -12,6 +12,7 @@ import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Heading from '@/custom/heading/Heading';
+import Button from '@/custom/buttons/Button';
 
 
 
@@ -90,6 +91,13 @@ const Clients = () => {
                                             <p className={styles.testimonial}>{client.testimonial}</p>
                                         </div>
                                     </div>
+
+                                    <div className={styles.ctaButton}>
+                                        <Button className={styles.ctaButtonPrimary}
+                                            variant='primary' href={`/client/${client.slug}`}>View Project
+                                        </Button>
+                                    </div>
+
                                 </div>
                             </SwiperSlide>
                         ))}

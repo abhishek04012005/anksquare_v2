@@ -1,0 +1,181 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 40;
+    padding: 0.75rem 0;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.mobileMenuButton {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.menuContainer {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.menu {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menuItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.menuItem:hover {
+    color: var(--text-primary);
+    background: var(--card-hover);
+}
+
+.menuItem.active {
+    color: var(--primary-color);
+    background: var(--primary-light);
+}
+
+.activeIndicator {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-color);
+    border-radius: 1px;
+}
+
+.userSection {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+}
+
+.userInfo svg {
+    color: var(--text-secondary);
+}
+
+.logoutButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--error-light);
+    color: var(--error-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logoutButton:hover {
+    background: var(--error-color);
+    color: white;
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 30;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobileMenuButton {
+        display: block;
+    }
+
+    .menuContainer {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--card-background);
+        flex-direction: column;
+        padding: 1.5rem;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 35;
+    }
+
+    .menuContainer.mobileOpen {
+        transform: translateX(0);
+    }
+
+    .menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menuItem {
+        padding: 1rem;
+    }
+
+    .userSection {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .userInfo {
+        justify-content: center;
+    }
+
+    .logoutButton {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .backdrop {
+        display: block;
+    }
+}

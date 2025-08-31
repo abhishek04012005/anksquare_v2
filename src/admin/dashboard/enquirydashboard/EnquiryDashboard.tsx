@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiPhone, FiCheck, FiX, FiArchive, FiSearch, FiFilter, FiClock, FiCheckCircle } from 'react-icons/fi'
-import { supabase } from '../../../supabase/supabase'
+import { supabase } from '@/lib/supabase'
 import styles from './EnquiryDashboard.module.css'
 
 interface Quote {

@@ -162,3 +162,14 @@
     min-width: 100%;
   }
 }
+
+.errorText {
+  color: #ff4444;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.errorInput {
+  border-color: #ff4444 !important;
+}

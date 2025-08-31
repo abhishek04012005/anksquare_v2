@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { FiX, FiCheck } from 'react-icons/fi'
 import { services } from '@/json/services'
 import styles from './GetQuotePopup.module.css'
-import { supabase } from '@/supabase/supabase'
+import { supabase } from '@/lib/supabase'
 
 interface GetQuotePopupProps {
   isOpen: boolean
@@ -15,6 +15,11 @@ interface FormData {
   name: string
   phone: string
   service: string
+}
+
+interface FormErrors {
+  name: string;
+  phone: string;
 }
 
 const GetQuotePopup: React.FC<GetQuotePopupProps> = ({
@@ -46,6 +51,17 @@ const GetQuotePopup: React.FC<GetQuotePopupProps> = ({
   }, [selectedService])
 
   const handleSubmit = async (e: React.FormEvent) => {
+
+    const nameValid = /^[A-Za-z\s]+$/.test(formData.name.trim())
+    const phoneValid = /^[6-9]\d{9}$/.test(formData.phone)
+
+    if (!nameValid || !phoneValid) {
+      setErrors({
+        name: nameValid ? '' : 'Please enter a valid name',
+        phone: phoneValid ? '' : 'Please enter a valid 10-digit number'
+      })
+      return
+    }
     e.preventDefault()
     setIsSubmitting(true)
 
@@ -83,10 +99,50 @@ const GetQuotePopup: React.FC<GetQuotePopupProps> = ({
     }
   }
 
+  const [errors, setErrors] = useState<FormErrors>({
+    name: '',
+    phone: ''
+  })
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target
+
+    // Name validation - only alphabets and spaces
+    if (name === 'name') {
+      if (!/^[A-Za-z\s]*$/.test(value)) {
+        setErrors(prev => ({
+          ...prev,
+          name: 'Please enter alphabets only'
+        }))
+        return
+      } else {
+        setErrors(prev => ({
+          ...prev,
+          name: ''
+        }))
+      }
+    }
+
+    // Phone validation
+    if (name === 'phone') {
+      if (value && !/^[6-9]\d{0,9}$/.test(value)) {
+        setErrors(prev => ({
+          ...prev,
+          phone: 'Enter valid 10-digit number starting with 6-9'
+        }))
+        if (!/^[6-9]\d*$/.test(value)) {
+          return
+        }
+      } else {
+        setErrors(prev => ({
+          ...prev,
+          phone: value.length === 10 ? '' : 'Phone number must be 10 digits'
+        }))
+      }
+    }
+
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
@@ -126,7 +182,9 @@ const GetQuotePopup: React.FC<GetQuotePopupProps> = ({
                   onChange={handleChange}
                   required
                   placeholder="Enter your full name"
+                  className={errors.name ? styles.errorInput : ''}
                 />
+                {errors.name && <span className={styles.errorText}>{errors.name}</span>}
               </div>
 
               <div className={styles.formGroup}>
@@ -138,8 +196,11 @@ const GetQuotePopup: React.FC<GetQuotePopupProps> = ({
                   value={formData.phone}
                   onChange={handleChange}
                   required
+                  maxLength={10}
                   placeholder="Enter your phone number"
+                  className={errors.phone ? styles.errorInput : ''}
                 />
+                {errors.phone && <span className={styles.errorText}>{errors.phone}</span>}
               </div>
 
               <div className={styles.formGroup}>

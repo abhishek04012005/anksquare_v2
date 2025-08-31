@@ -225,6 +225,15 @@
     transform: scale(1);
 }
 
+.ctaButton {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.ctaButtonPrimary {
+    width: 100%;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

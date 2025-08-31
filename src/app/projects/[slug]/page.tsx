@@ -35,6 +35,7 @@ export default async function Page({ params }: PageProps) {
   const resolvedParams = await params
   const project = workProjects.find((p) => p.link.endsWith(`/${resolvedParams.slug}`))
 
+
   if (!project) {
     notFound()
   }

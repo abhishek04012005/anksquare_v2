@@ -1,5 +1,12 @@
-import QuoteDashboard from "@/admin/dashboard/enquirydashboard/EnquiryDashboard";
+import ContactDashboard from "@/admin/dashboard/contactdashboard/ContactDashboard"
+import QuoteDashboard from "@/admin/dashboard/enquirydashboard/EnquiryDashboard"
 
-export default function QuoteDashboardPage() {
+
+export const metadata = {
+  title: 'Quote Dashboard | Ditvi Technologies',
+  description: 'Quote management dashboard'
+}
+
+export default function ContactPage() {
     return <QuoteDashboard />
 }

@@ -20,7 +20,7 @@ export const socialLinks: SocialLink[] = [
 ];
 
 export const contactDetails: ContactDetails = {
-  email: 'contact@ditv.org',
+  email: 'contact@ditvi.org',
   number: '+91 9263767441',
   address: 'Near B.D. College, Mithapur Patna-800001'
 };

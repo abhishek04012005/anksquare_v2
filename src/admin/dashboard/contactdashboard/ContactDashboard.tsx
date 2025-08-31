@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiInbox, FiCheck, FiX, FiArchive, FiSearch, FiFilter } from 'react-icons/fi'
-import { supabase } from '../../../supabase/supabase'
+import { supabase } from '@/lib/supabase'
 import styles from './ContactDashboard.module.css'
 
 interface Contact {

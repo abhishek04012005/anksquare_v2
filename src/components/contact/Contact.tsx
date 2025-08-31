@@ -5,7 +5,7 @@ import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 import styles from './Contact.module.css'
 import Heading from '@/custom/heading/Heading'
 import { contactDetails } from '@/json/ditviinfo'
-import { supabase } from '@/supabase/supabase'
+import { supabase } from '@/lib/supabase'
 
 const contactInfo = [
     {
@@ -36,11 +36,55 @@ const Contact = () => {
         message: ''
     })
     const [isSubmitting, setIsSubmitting] = useState(false)
+    // Add validation state
+    const [errors, setErrors] = useState({
+        name: '',
+        number: ''
+    })
 
+    // Update handleChange function
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target
+
+        // Validation for name field - only alphabets and spaces
+        if (name === 'name') {
+            if (!/^[A-Za-z\s]*$/.test(value)) {
+                setErrors(prev => ({
+                    ...prev,
+                    name: 'Please enter alphabets only'
+                }))
+                return
+            } else {
+                setErrors(prev => ({
+                    ...prev,
+                    name: ''
+                }))
+            }
+        }
+
+        // Validation for phone number
+        if (name === 'number') {
+            // Check if starts with valid digits and has correct length
+            if (!/^[6-9]\d{0,9}$/.test(value)) {
+                setErrors(prev => ({
+                    ...prev,
+                    number: 'Enter valid 10-digit number starting with 6-9'
+                }))
+                // Allow input only if it's empty or matches pattern
+                if (value && !/^[6-9]\d*$/.test(value)) {
+                    return
+                }
+            } else {
+                setErrors(prev => ({
+                    ...prev,
+                    number: ''
+                }))
+            }
+        }
+
         setFormData(prev => ({
             ...prev,
-            [e.target.name]: e.target.value
+            [name]: value
         }))
     }
 
@@ -123,17 +167,24 @@ const Contact = () => {
                                 value={formData.name}
                                 onChange={handleChange}
                                 required
+                                pattern="[A-Za-z\s]+"
+                                title="Please enter alphabets only"
                             />
+                            {errors.name && <span className={styles.errorText}>{errors.name}</span>}
                         </div>
                         <div className={styles.formGroup}>
                             <input
-                                type="text"
+                                type="tel"
                                 name="number"
                                 placeholder="Your Number"
                                 value={formData.number}
                                 onChange={handleChange}
                                 required
+                                pattern="[6-9][0-9]{9}"
+                                maxLength={10}
+                                title="Please enter a valid 10-digit number starting with 6-9"
                             />
+                            {errors.number && <span className={styles.errorText}>{errors.number}</span>}
                         </div>
                         <div className={styles.formGroup}>
                             <input
