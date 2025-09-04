@@ -1,4 +1,3 @@
-import ContactDashboard from "@/admin/dashboard/contactdashboard/ContactDashboard"
 import QuoteDashboard from "@/admin/dashboard/enquirydashboard/EnquiryDashboard"
 
 
@@ -10,3 +9,5 @@ export const metadata = {
 export default function ContactPage() {
     return <QuoteDashboard />
 }
+
+//dfafd
