@@ -1,6 +1,6 @@
 .clientSection {
     padding: 6rem 0;
-    background: var(--background-gradient);
+    background: var(--bg-background);
     position: relative;
     overflow: hidden;
 }

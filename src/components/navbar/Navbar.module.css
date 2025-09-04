@@ -33,11 +33,11 @@
 
 .logo:hover {
     transform: translateY(-1px);
-    color: #ff6000;
+    color: #213f61;
 }
 
 .logoImage {
-    width: 50%;
+    width: 35%;
     height: auto;
 }
 
@@ -62,8 +62,8 @@
 }
 
 .menuLink:hover {
-    color: #ff6000;
-    background-color: rgba(255, 96, 0, 0.08);
+    color: #213f61;
+    background-color: rgba(33, 63, 97, 0.08);
     transform: translateY(-1px);
 }
 
@@ -84,7 +84,7 @@
 .mobileMenuToggle:hover,
 .mobileMenuToggle.active {
     background-color: rgba(255, 96, 0, 0.08);
-    color: #ff6000;
+    color: #213f61;
 }
 
 .mobileMenu {
@@ -116,7 +116,7 @@
 
 .mobileMenuLink:hover {
     background-color: rgba(255, 96, 0, 0.08);
-    color: #ff6000;
+    color: #213f61;
 }
 
 /* Tablet and Desktop */

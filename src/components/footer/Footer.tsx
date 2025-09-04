@@ -5,7 +5,7 @@ import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 import styles from './Footer.module.css'
 import { socialLinks } from '@/json/ditviinfo'
 import { contactDetails } from '@/json/ditviinfo'
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/logofinal.svg";
 
 
 const quickLinks = [

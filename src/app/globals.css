@@ -1,18 +1,19 @@
 :root {
   --background: #ffffff;
+  --bg-background: linear-gradient(135deg, rgba(33, 63, 97, 0.05), #ffffff);
   --foreground: #171717;
-  --primary-color: #ff6000;
-  --primary-hover: #ff7a2f;
+  --primary-color: #213f61;
+  --primary-hover: #2e5a8c;
   --text-primary: #333333;
   --text-secondary: #666666;
   --background-light: #f8f9fa;
   --background-dark: #ffffff;
-  --accent-light: rgba(255, 96, 0, 0.1);
-  --accent-medium: rgba(255, 96, 0, 0.15);
+  --accent-light: rgba(33, 63, 97, 0.08);
+  --accent-medium: rgba(33, 63, 97, 0.15);
   --shadow-color: rgba(0, 0, 0, 0.1);
   --border-color: #e5e5e5;
   --card-background: #ffffff;
-  --hover-background: rgba(255, 96, 0, 0.08);
+  --hover-background: rgba(33, 63, 97, 0.08);
   --background-gradient: linear-gradient(135deg, #fff7f2, #ffffff);
 }
 

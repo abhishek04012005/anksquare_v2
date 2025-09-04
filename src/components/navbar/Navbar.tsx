@@ -1,12 +1,11 @@
 'use client';
-
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { IoMdMenu, IoMdClose } from 'react-icons/io';
 import clsx from 'clsx';
 import styles from './Navbar.module.css';
 import Image from 'next/image';
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/logofinal.svg";
 
 interface LinkItem {
   name: string;
@@ -25,7 +24,6 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
@@ -78,7 +76,6 @@ const Navbar: React.FC = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         <div className={clsx(styles.mobileMenu, { [styles.show]: isOpen })}>
           {renderMenuItems(true)}
         </div>
