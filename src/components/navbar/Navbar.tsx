@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.navContent}>
           <Link href="/" className={styles.logo}>
-            <Image src={Logo} alt="Ditvi Technologies" className={styles.logoImage}  />
+            <Image src={Logo} alt="Anksquare" className={styles.logoImage}  />
           </Link>
 
  

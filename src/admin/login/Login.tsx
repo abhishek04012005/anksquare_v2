@@ -71,7 +71,7 @@ const Login = () => {
                 <div className={styles.logoContainer}>
                     <Image
                         src={DitviLogo}
-                        alt="Ditvi Technologies Logo"
+                        alt="Anksquare Logo"
                         width={150}
                         height={50}
                         priority

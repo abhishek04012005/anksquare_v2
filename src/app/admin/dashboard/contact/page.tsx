@@ -2,7 +2,7 @@ import ContactDashboard from "@/admin/dashboard/contactdashboard/ContactDashboar
 
 
 export const metadata = {
-  title: 'Contact Dashboard | Ditvi Technologies',
+  title: 'Contact Dashboard | Anksquare',
   description: 'Contact management dashboard'
 }
 

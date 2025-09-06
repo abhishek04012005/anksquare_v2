@@ -2,7 +2,7 @@ import QuoteDashboard from "@/admin/dashboard/enquirydashboard/EnquiryDashboard"
 
 
 export const metadata = {
-  title: 'Quote Dashboard | Ditvi Technologies',
+  title: 'Quote Dashboard | Anksquare',
   description: 'Quote management dashboard'
 }
 

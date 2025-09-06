@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 
     return {
-        title: `${client.name} - Project Portfolio | Ditvi Technologies`,
+        title: `${client.name} - Project Portfolio | Anksquare`,
         description: `View our work for ${client.name}: ${client.project}`,
         openGraph: {
             title: client.name,

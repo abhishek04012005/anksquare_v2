@@ -2,7 +2,7 @@ import AdminDashboard from "@/admin/dashboard/Dashboard"
 
 
 export const metadata = {
-  title: 'Dashboard | Ditvi Technologies',
+  title: 'Dashboard | Anksquare',
   description: 'Admin dashboard for managing contacts and services'
 }
 

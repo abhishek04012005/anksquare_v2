@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 
     return {
-        title: `${post.title} | Ditvi Technologies Blog`,
+        title: `${post.title} | Anksquare Blog`,
         description: post.excerpt
     }
 }

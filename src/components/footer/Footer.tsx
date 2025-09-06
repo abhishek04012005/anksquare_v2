@@ -38,7 +38,7 @@ const Footer = () => {
                         <Link href="/" className={styles.logo}>
                             <Image
                                 src={Logo}
-                                alt="Ditvi Technologies"
+                                alt="Anksquare"
                                 width={1000}
                                 height={1000}
                                 className={styles.logoImage}
@@ -100,7 +100,7 @@ const Footer = () => {
 
                 <div className={styles.bottomBar}>
                     <div className={styles.copyright}>
-                        © {year} Ditvi Technologies. All rights reserved.
+                        © {year} Anksquare. All rights reserved.
                     </div>
                     <div className={styles.social}>
                         {socialLinks.map((link, index) => (

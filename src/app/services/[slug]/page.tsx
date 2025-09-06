@@ -27,7 +27,7 @@ export async function generateMetadata(
   }
 
   return {
-    title: `${service.title} | Ditvi Technologies`,
+    title: `${service.title} | Anksquare`,
     description: service.description,
   };
 }

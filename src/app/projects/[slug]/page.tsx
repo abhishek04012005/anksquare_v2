@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${project.title} | Ditvi Technologies Portfolio`,
+    title: `${project.title} | Anksquare Portfolio`,
     description: project.description
   }
 }

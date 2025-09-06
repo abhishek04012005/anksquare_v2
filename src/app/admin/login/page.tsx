@@ -4,8 +4,8 @@ import { redirect } from 'next/navigation'
 import Login from '@/admin/login/Login'
 
 export const metadata = {
-  title: 'Admin Login | Ditvi Technologies',
-  description: 'Secure admin login portal for Ditvi Technologies'
+  title: 'Admin Login | Anksquare',
+  description: 'Secure admin login portal for Anksquare'
 }
 
 export default async function LoginPage() {

@@ -54,7 +54,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <p className={styles.description}>
-              At Ditvi Technologies, we blend creativity with technology to deliver
+              At Anksquare, we blend creativity with technology to deliver
               exceptional digital solutions. Our passionate team is dedicated to
               transforming your ideas into impressive digital realities.
             </p>
