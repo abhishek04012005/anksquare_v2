@@ -25,6 +25,17 @@ const services = [
     { name: 'Lead Generation', href: '/services/lead-generation' }
 ]
 
+const accountmanagement = [
+    { name: 'Amazon', href: '/services/amazon' },
+    { name: 'Flipkart', href: '/services/flipkart' },
+    { name: 'Blinkit', href: '/services/blinkit' },
+    { name: 'Myntra', href: '/services/myntra' },
+    { name: 'Meesho', href: '/services/meesho' },
+    { name: 'Ajio', href: '/services/ajio' },
+    { name: 'JioMart', href: '/services/jiomart' },
+    { name: 'Nykaa', href: '/services/nykaa' }
+]
+
 
 
 const Footer = () => {
@@ -87,14 +98,16 @@ const Footer = () => {
                         </div>
 
                         <div className={styles.linkColumn}>
-                            <h3>Sitemap</h3>
+                            <h3>Account Management</h3>
                             <ul>
-                                <li>
-                                    <Link href="/contact">Sitemap</Link>
-                                </li>
+                                {accountmanagement.map((service, index) => (
+                                    <li key={index}>
+                                        <Link href={service.href}>{service.name}</Link>
+                                    </li>
+                                ))}
                             </ul>
-
                         </div>
+
                     </div>
                 </div>
 
