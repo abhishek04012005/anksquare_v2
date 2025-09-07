@@ -1,194 +1,150 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, FC } from 'react'
 import Image from 'next/image'
-import { motion, useAnimation } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { motion } from 'framer-motion'
 import styles from './Service.module.css'
-import Heading from '@/custom/heading/Heading'
 import Button from '@/custom/buttons/Button'
-import { services, ServiceItem } from '../../json/services'
 import GetQuotePopup from '@/custom/getquotepopup/GetQuotePopup'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Navigation, Pagination } from 'swiper/modules'
-import 'swiper/css/autoplay'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
+import { mainServices, marketplaceServices, websiteTypes } from '../../json/services'
 
-interface ServiceCardProps {
-    service: ServiceItem
-    isReversed: boolean
-    index: number
+import { StaticImageData } from 'next/image';
+import Heading from '@/custom/heading/Heading'
+
+interface MainServiceProps {
+    service: {
+        image: FC;
+        title: string;
+        description: string;
+        features: string[];
+        path: string;
+    };
+    isReversed: boolean;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ service, isReversed, index }) => {
-    const [showQuotePopup, setShowQuotePopup] = useState(false)
-
-    const controls = useAnimation()
-    const [ref, inView] = useInView({
-        threshold: 0.2,
-        triggerOnce: true
-    })
-
-    useEffect(() => {
-        if (inView) {
-            controls.start('visible')
-        }
-    }, [controls, inView])
-
-    const containerVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            // transition: {
-            //     duration: 0.6,
-            //     delay: index * 0.2
-            // }
-        }
-    }
+const MainService = ({ service, isReversed }: MainServiceProps) => {
+    const [showQuote, setShowQuote] = useState(false)
 
     return (
-        <>
+        <div className={`${styles.mainService} ${isReversed ? styles.reversed : ''}`}>
             <motion.div
-                ref={ref}
-                variants={containerVariants}
-                initial="hidden"
-                animate={controls}
-                className={`${styles.serviceCard} ${isReversed ? styles.reversed : ''}`}
+                className={styles.imageSection}
+                initial={{ opacity: 0, x: isReversed ? 50 : -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
             >
-                <div className={styles.imageContainer}>
-                    <Image
-                        src={service.image}
-                        alt={service.title}
-                        width={600}
-                        height={400}
-                        className={styles.serviceImage}
-                        priority={index < 2}
-                    />
-                    <div className={styles.imageBg}></div>
-                </div>
+                <service.image />
+            </motion.div>
 
-                <div className={styles.contentContainer}>
-                    <h3 className={styles.serviceTitle}>{service.title}</h3>
-                    <p className={styles.serviceDescription}>{service.description}</p>
-                    <ul className={styles.featureList}>
-                        {service.features.map((feature, idx) => (
-                            <motion.li
-                                key={idx}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={controls}
-                                variants={{
-                                    visible: {
-                                        opacity: 1,
-                                        x: 0,
-                                        // transition: { delay: 0.3 + idx * 0.1 }
-                                    }
-                                }}
-                            >
-                                <span className={styles.bullet}>•</span>
-                                {feature}
-                            </motion.li>
-                        ))}
-                    </ul>
-                    <div className={styles.cta}>
-                        <Button href={service.path} className={styles.buttonItem} variant='primary'>View More</Button>
-                        <Button onClick={() => setShowQuotePopup(true)} className={styles.buttonItem} variant='secondary'>Get Quote</Button>
-                    </div>
+            <motion.div
+                className={styles.contentSection}
+                initial={{ opacity: 0, x: isReversed ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+            >
+                <h2 className={styles.mainTitle}>{service.title}</h2>
+                <p className={styles.mainDescription}>{service.description}</p>
+                <ul className={styles.mainFeatures}>
+                    {service.features.map((feature, index) => (
+                        <motion.li
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                        >
+                            {feature}
+                        </motion.li>
+                    ))}
+                </ul>
+                <div className={styles.mainButtons}>
+                    <Button href={service.path} variant="primary">View More</Button>
+                    <Button onClick={() => setShowQuote(true)} variant="secondary">Get Quote</Button>
                 </div>
             </motion.div>
+
             <GetQuotePopup
-                isOpen={showQuotePopup}
-                onClose={() => setShowQuotePopup(false)}
+                isOpen={showQuote}
+                onClose={() => setShowQuote(false)}
                 selectedService={service.title}
             />
-        </>
+        </div>
     )
 }
 
-const Services: React.FC = () => {
-    const beforeSliderServices = services.filter(service => !service.isSlider && service.id < 10)
-    const sliderServices = services.filter(service => service.isSlider)
-    const afterSliderServices = services.filter(service => service.id === 10)
+interface SubService {
+    logo: string | StaticImageData;
+    title: string;
+    features: string[];
+    path: string;
+    id: string | number;
+}
 
+const SubServiceCard = ({ service }: { service: SubService }) => {
     return (
-        <section className={styles.services} id="services">
+        <motion.div
+            className={styles.subCard}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -5 }}
+        >
+            <div className={styles.logoContainer}>
+                <Image
+                    src={service.logo}
+                    alt={service.title}
+                    className={styles.serviceLogo}
+                />
+            </div>
+            <h3 className={styles.cardTitle}>{service.title}</h3>
+            <ul className={styles.cardFeatures}>
+                {service.features.map((feature, index) => (
+                    <li key={index}>{feature}</li>
+                ))}
+            </ul>
+            <Button href={service.path} variant="primary" className={styles.viewDetails}>
+                View Details
+            </Button>
+        </motion.div>
+    )
+}
+
+const Services = () => {
+    return (
+        <section className={styles.servicesSection}>
             <div className={styles.container}>
                 <Heading
-                    subtitle='Our Services'
-                    title='Empowering Your'
-                    titleHighlight='Digital Growth'
+                    subtitle="Services"
+                    title="End-to-End Ecommerce Solutions Powered By"
+                    titleHighlight="Digital Expertise"
                 />
 
-                <div className={styles.servicesGrid}>
-                    {/* Regular services before slider */}
-                    {beforeSliderServices.map((service, index) => (
-                        <ServiceCard
-                            key={service.id}
+                {mainServices.map((service, index) => (
+                    <div key={service.id} className={styles.serviceBlock}>
+                        <MainService
                             service={service}
                             isReversed={index % 2 !== 0}
-                            index={index}
                         />
-                    ))}
 
-                    {/* Slider services */}
-                    {sliderServices.length > 0 && (
-                        <div className={styles.sliderContainer}>
-                            <Swiper
-                                modules={[Navigation, Pagination, Autoplay]}
-                                spaceBetween={30}
-                                slidesPerView={3}
-                                navigation
-                                pagination={{ clickable: true }}
-                                autoplay={{
-                                    delay: 3000,
-                                    disableOnInteraction: false,
-                                    pauseOnMouseEnter: true
-                                }}
-                                loop={true}
-                                className={styles.swiper}
-                                breakpoints={{
-                                    320: {
-                                        slidesPerView: 1,
-                                        spaceBetween: 20
-                                    },
-                                    768: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 25
-                                    },
-                                    1024: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 30
-                                    }
-                                }}
-                            >
-                                {sliderServices.map((service, index) => (
-                                    <SwiperSlide key={service.id}>
-                                        <div className={styles.sliderCard}>
-                                            <ServiceCard
-                                                service={service}
-                                                isReversed={false}
-                                                index={index + beforeSliderServices.length}
-                                            />
-                                        </div>
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
+                        <div className={styles.subServices}>
+                            <h2 className={styles.subTitle}>
+                                {index === 0 ? 'Marketplace Solutions' : 'Website Solutions'}
+                            </h2>
+                            <div className={styles.cardGrid}>
+                                {index === 0
+                                    ? marketplaceServices.map(service => (
+                                        <SubServiceCard key={service.id} service={service} />
+                                    ))
+                                    : websiteTypes.map(service => (
+                                        <SubServiceCard key={service.id} service={service} />
+                                    ))
+                                }
+                            </div>
                         </div>
-                    )}
-
-                    {/* Service with ID 10 after slider */}
-                    {afterSliderServices.map((service, index) => (
-                        <ServiceCard
-                            key={service.id}
-                            service={service}
-                            isReversed={index % 2 !== 0}
-                            index={index + beforeSliderServices.length + sliderServices.length}
-                        />
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
         </section>
     )
 }
+
 export default Services

@@ -2,11 +2,11 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import styles from './About.module.css'
-import Image from 'next/image'
 import Heading from '@/custom/heading/Heading'
 import Button from '@/custom/buttons/Button'
 import { features } from '../../json/about'
-import AboutImage from "../../assets/about/about.jpg"
+import AboutSVG from "../../../public/assets/svg/AboutSVG/AboutSVG"
+
 
 
 const About = () => {
@@ -18,12 +18,12 @@ const About = () => {
   return (
     <section className={styles.about} ref={ref}>
       <div className={styles.container}>
-
         <Heading
           subtitle="About Us"
-          title="Crafting Digital Excellence with"
-          titleHighlight="Innovation"
+          title="Empowering Ecommerce Through"
+          titleHighlight="Digital Expertise"
         />
+
 
         <div className={styles.content}>
           <motion.div
@@ -33,13 +33,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className={styles.imageBorder}>
-              <Image
-                src={AboutImage}
-                alt="Our Work Culture"
-                width={500}
-                height={600}
-                className={styles.aboutImage}
-              />
+              <AboutSVG />
             </div>
             <div className={styles.experience}>
               <span className={styles.number}>5+</span>

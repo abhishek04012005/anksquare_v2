@@ -1,4 +1,4 @@
-import { services } from '../../../json/services';
+import { mainServices } from '../../../json/services';
 import ServiceDetail from '@/components/service/servicedetail/ServiceDetail';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -9,7 +9,7 @@ export interface PageProps {
 }
 
 export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
-  return services.map((service) => ({
+  return mainServices.map((service) => ({
     slug: service.path.replace('/services/', ''),
   }));
 }
@@ -17,7 +17,7 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
 export async function generateMetadata(
   { params }: PageProps
 ): Promise<Metadata> {
-  const service = services.find(async (s) => s.path === `/services/${(await params).slug}`);
+  const service = mainServices.find(async (s) => s.path === `/services/${(await params).slug}`);
 
   if (!service) {
     return {
@@ -34,7 +34,7 @@ export async function generateMetadata(
 
 export default async function Page({ params }: PageProps) {
   const resolvedParams = await params;
-  const service = services.find((s) => s.path === `/services/${resolvedParams.slug}`);
+  const service = mainServices.find((s) => s.path === `/services/${resolvedParams.slug}`);
 
   if (!service) {
     notFound();

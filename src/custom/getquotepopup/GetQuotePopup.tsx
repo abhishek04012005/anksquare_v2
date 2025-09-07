@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { FiX, FiCheck } from 'react-icons/fi'
-import { services } from '@/json/services'
+import { mainServices } from '@/json/services'
 import styles from './GetQuotePopup.module.css'
 import { supabase } from '@/lib/supabase'
 
@@ -213,7 +213,7 @@ const GetQuotePopup: React.FC<GetQuotePopupProps> = ({
                   required
                 >
                   <option value="">Select a service</option>
-                  {services.map(service => (
+                  {mainServices.map(service => (
                     <option key={service.id} value={service.title}>
                       {service.title}
                     </option>

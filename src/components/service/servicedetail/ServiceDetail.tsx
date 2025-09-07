@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { FiArrowLeft, FiCheck } from 'react-icons/fi'
 
-import { services, ServiceItem } from '../../../json/services'
+import { mainServices, MainServiceProps } from '../../../json/services'
 import Button from '@/custom/buttons/Button'
 import styles from './ServiceDetail.module.css'
 import GetQuotePopup from '@/custom/getquotepopup/GetQuotePopup'
@@ -22,8 +22,8 @@ const ServiceDetail: FC<ServiceDetailProps> = ({ params }) => {
   const [showQuotePopup, setShowQuotePopup] = useState(false)
 
 
-  const service = useMemo<ServiceItem | undefined>(
-    () => services.find((s) => s.path === slugPath),
+  const service = useMemo<MainServiceProps | undefined>(
+    () => mainServices.find((s) => s.path === slugPath),
     [slugPath]
   )
 
@@ -74,14 +74,7 @@ const ServiceDetail: FC<ServiceDetailProps> = ({ params }) => {
               className={styles.mainContent}
             >
               <div className={styles.imageContainer}>
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  width={800}
-                  height={500}
-                  className={styles.mainImage}
-                  priority
-                />
+                <service.image />
               </div>
 
               {/* Features */}

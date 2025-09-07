@@ -3,6 +3,39 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import styles from './Hero.module.css'
 import Button from '@/custom/buttons/Button'
+import HeroSvg from "../../../public/assets/svg/HeroSVG/HeroSVG"
+
+import { FaShoppingCart, FaCode, FaChartLine, FaTools } from 'react-icons/fa'
+import type { IconType } from 'react-icons'
+
+export interface HeroCard {
+    id: number
+    title: string
+    icon: IconType
+}
+
+export const heroCards: HeroCard[] = [
+    {
+        id: 1,
+        title: 'E-commerce Solutions',
+        icon: FaShoppingCart
+    },
+    {
+        id: 2,
+        title: 'Web Development',
+        icon: FaCode
+    },
+    {
+        id: 3,
+        title: 'Digital Growth',
+        icon: FaChartLine
+    },
+    {
+        id: 4,
+        title: 'Technical Support',
+        icon: FaTools
+    }
+]
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -21,14 +54,14 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className={styles.textContent}
           >
-             <h1 className={styles.title}>
-              Empowering Business Through{' '}
-              <span className={styles.highlight}>Digital Innovation</span>
+            <h1 className={styles.title}>
+              Empowering Your Digital Growth. Reach More with Seamless{' '}
+              <span className={styles.highlight}> Digital Experience</span>
             </h1>
             <p className={styles.description}>
-              We create cutting-edge digital solutions that transform businesses 
-              and drive success in the modern digital landscape.
+              We simplify digital commerce by building scalable web platforms and managing multi-channel merchant operations. From seamless storefronts to backend integrations, our solutions empower businesses to grow efficiently in today&apos;s competitive market.
             </p>
+
             <div className={styles.cta}>
               <Button href="/services" variant="primary">
                 Explore Our Work
@@ -46,11 +79,7 @@ const Hero = () => {
             className={styles.imageContainer}
           >
             <div className={styles.imageWrapper}>
-              <div className={styles.shapes}>
-                <div className={`${styles.shape} ${styles.shape1}`}></div>
-                <div className={`${styles.shape} ${styles.shape2}`}></div>
-                <div className={`${styles.shape} ${styles.shape3}`}></div>
-              </div>
+              <HeroSvg />
             </div>
           </motion.div>
         </div>
@@ -73,6 +102,29 @@ const Hero = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className={styles.cardSection}
+        >
+          {heroCards.map((card, index) => (
+            <motion.div
+              key={card.id}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
+              transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+              className={styles.card}
+            >
+              <div className={styles.cardIcon}>
+                <card.icon size={32} />
+              </div>
+              <h3 className={styles.cardTitle}>{card.title}</h3>
+            </motion.div>
+          ))}
+        </motion.div>
+
       </div>
     </section>
   )
