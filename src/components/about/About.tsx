@@ -5,7 +5,7 @@ import styles from './About.module.css'
 import Heading from '@/custom/heading/Heading'
 import Button from '@/custom/buttons/Button'
 import { features } from '../../json/about'
-import AboutSVG from "../../../public/assets/svg/AboutSVG/AboutSVG"
+import AboutSVG from "../../custom/svg/AboutSVG/AboutSVG"
 
 
 

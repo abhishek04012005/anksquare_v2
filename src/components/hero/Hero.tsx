@@ -3,38 +3,38 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import styles from './Hero.module.css'
 import Button from '@/custom/buttons/Button'
-import HeroSvg from "../../../public/assets/svg/HeroSVG/HeroSVG"
+import HeroSvg from "../../custom/svg/HeroSVG/HeroSVG"
 
 import { FaShoppingCart, FaCode, FaChartLine, FaTools } from 'react-icons/fa'
 import type { IconType } from 'react-icons'
 
 export interface HeroCard {
-    id: number
-    title: string
-    icon: IconType
+  id: number
+  title: string
+  icon: IconType
 }
 
 export const heroCards: HeroCard[] = [
-    {
-        id: 1,
-        title: 'E-commerce Solutions',
-        icon: FaShoppingCart
-    },
-    {
-        id: 2,
-        title: 'Web Development',
-        icon: FaCode
-    },
-    {
-        id: 3,
-        title: 'Digital Growth',
-        icon: FaChartLine
-    },
-    {
-        id: 4,
-        title: 'Technical Support',
-        icon: FaTools
-    }
+  {
+    id: 1,
+    title: 'E-commerce Solutions',
+    icon: FaShoppingCart
+  },
+  {
+    id: 2,
+    title: 'Web Development',
+    icon: FaCode
+  },
+  {
+    id: 3,
+    title: 'Digital Growth',
+    icon: FaChartLine
+  },
+  {
+    id: 4,
+    title: 'Technical Support',
+    icon: FaTools
+  }
 ]
 
 const Hero = () => {
@@ -55,12 +55,13 @@ const Hero = () => {
             className={styles.textContent}
           >
             <h1 className={styles.title}>
-              Empowering Your Digital Growth. Reach More with Seamless{' '}
-              <span className={styles.highlight}> Digital Experience</span>
+              Grow Your Business Online with Smart{' '}
+              <span className={styles.highlight}>Website & Marketplace Solutions</span>
             </h1>
             <p className={styles.description}>
-              We simplify digital commerce by building scalable web platforms and managing multi-channel merchant operations. From seamless storefronts to backend integrations, our solutions empower businesses to grow efficiently in today&apos;s competitive market.
+              We help you sell online with ease. From building professional websites to setting up and managing your seller accounts on platforms like Amazon and Flipkart, we make sure your business runs smoothly and reaches more customers.
             </p>
+
 
             <div className={styles.cta}>
               <Button href="/services" variant="primary">

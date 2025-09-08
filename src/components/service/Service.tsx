@@ -9,6 +9,7 @@ import { mainServices, marketplaceServices, websiteTypes } from '../../json/serv
 
 import { StaticImageData } from 'next/image';
 import Heading from '@/custom/heading/Heading'
+import imageLoader from '../../../image-loader'
 
 interface MainServiceProps {
     service: {
@@ -90,9 +91,12 @@ const SubServiceCard = ({ service }: { service: SubService }) => {
         >
             <div className={styles.logoContainer}>
                 <Image
+                    loader={imageLoader}
                     src={service.logo}
                     alt={service.title}
                     className={styles.serviceLogo}
+                    height={60}
+                    width={60}
                 />
             </div>
             <h3 className={styles.cardTitle}>{service.title}</h3>
@@ -101,13 +105,12 @@ const SubServiceCard = ({ service }: { service: SubService }) => {
                     <li key={index}>{feature}</li>
                 ))}
             </ul>
-            <Button href={service.path} variant="primary" className={styles.viewDetails}>
+            <Button href={`/service/${service.path}`} variant="primary" className={styles.viewDetails}>
                 View Details
             </Button>
         </motion.div>
     )
 }
-
 const Services = () => {
     return (
         <section className={styles.servicesSection}>

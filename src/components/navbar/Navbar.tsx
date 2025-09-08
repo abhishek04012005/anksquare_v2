@@ -5,7 +5,7 @@ import { IoMdMenu, IoMdClose } from 'react-icons/io';
 import clsx from 'clsx';
 import styles from './Navbar.module.css';
 import Image from 'next/image';
-import Logo from "../../assets/logofinal.svg";
+import imageLoader from '../../../image-loader';
 
 interface LinkItem {
   name: string;
@@ -17,6 +17,7 @@ const navItems: LinkItem[] = [
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
   { name: 'Projects', path: '/projects' },
+  { name: 'Clients', path: '/client' },
   { name: 'Contact', path: '/contact' },
 ];
 
@@ -59,13 +60,14 @@ const Navbar: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.navContent}>
           <Link href="/" className={styles.logo}>
-            <Image src={Logo} alt="Anksquare" className={styles.logoImage}  />
+            <Image loader={imageLoader} src="./logo.svg" alt="Anksquare" className={styles.logoImage} width={1000}
+              height={1000} />
           </Link>
 
- 
+
           <div className={styles.desktopMenu}>{renderMenuItems(false)}</div>
 
- 
+
           <button
             className={clsx(styles.mobileMenuToggle, { [styles.active]: isOpen })}
             onClick={toggleMenu}

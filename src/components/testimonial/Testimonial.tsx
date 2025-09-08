@@ -15,6 +15,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import styles from './Testimonial.module.css';
 import Heading from '@/custom/heading/Heading';
+import imageLoader from '../../../image-loader';
 
 interface TestimonialItem {
     id: number;
@@ -28,41 +29,42 @@ interface TestimonialItem {
 const testimonials: TestimonialItem[] = [
     {
         id: 1,
-        name: 'Jaya',
-        position: 'CEO',
-        image: '/images/jaya.jpg',
+        name: 'Jaya J.',
+        position: 'Founder, PureGlow Skincare',
+        image: './testimonial/jaya.png',
         quote:
-            'Sharma Interiors transformed our office space into a modern, functional environment. Their attention to detail exceeded our expectations.',
+            'Ank Square helped us launch on Amazon and Flipkart with ease. Their team handled everything—from account setup to product listings—and our sales took off within weeks.',
         rating: 5
     },
     {
         id: 2,
-        name: 'R.K. Singh',
-        position: 'Restaurant Manager',
-        image: '/images/rk-singh.jpg',
+        name: 'Ravi Khurana',
+        position: 'Director, Khurana Electronics',
+        image: './testimonial/male.png',
         quote:
-            'The wooden work and partitions they installed are simply outstanding. The team was efficient, and the results were exactly what we envisioned.',
+            'We needed a professional website that could handle bulk orders and customer inquiries. Ank Square delivered a fast, clean site that’s easy to manage and looks great.',
         rating: 5
     },
     {
         id: 3,
-        name: 'A. Patel',
-        position: 'Hotel Director',
-        image: '/images/a-patel.jpg',
+        name: 'Sneha Joshi',
+        position: 'Operations Head, Urban Threads',
+        image: './testimonial/jaya.png',
         quote:
-            'Their expertise in ceiling work and paneling is remarkable. They delivered the project on time and maintained high quality throughout.',
+            'Their merchant account management service is top-notch. We now sell on six platforms and Ank Square keeps everything running smoothly—from listings to logistics.',
         rating: 5
     },
     {
         id: 4,
-        name: 'J. Sharma',
-        position: 'Interior Designer',
-        image: '/images/j-sharma.jpg',
+        name: 'Manish Verma',
+        position: 'Co-founder, FreshBasket',
+        image: './testimonial/male.png',
         quote:
-            'Sharma Interiors has an incredible eye for design. They helped us create a cohesive look throughout our office that truly reflects our brand.',
+            'Ank Square built our e-commerce site and helped us go live on Blinkit and JioMart. Their support is reliable, and they really understand how online selling works.',
         rating: 5
     }
-];
+]
+
 
 const Testimonial: React.FC = () => {
     const swiperRef = useRef<SwiperType | null>(null);
@@ -131,6 +133,7 @@ const Testimonial: React.FC = () => {
                                     <div className={styles.clientInfo}>
                                         <div className={styles.clientImage}>
                                             <Image
+                                                loader={imageLoader}
                                                 src={t.image}
                                                 alt={t.name}
                                                 width={60}

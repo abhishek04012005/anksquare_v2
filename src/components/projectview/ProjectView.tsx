@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { FaGlobe, FaImage, FaIdCard, FaFile, FaChartLine } from 'react-icons/fa'
 import { clients, Client } from '@/json/client'
 import styles from './ProjectView.module.css'
+import imageLoader from '../../../image-loader'
 
 
 interface ProjectViewProps {
@@ -42,6 +43,7 @@ const ProjectView: FC<ProjectViewProps> = ({ slug }) => {
         <div className={styles.header}>
           <div className={styles.clientInfo}>
             <Image
+              loader={imageLoader}
               src={client.logo}
               alt={client.name}
               width={180}
@@ -92,15 +94,16 @@ const ProjectView: FC<ProjectViewProps> = ({ slug }) => {
                   {work.images.map((image, i) => (
                     <div key={i} className={styles.imageContainer}>
                       <Image
+                        loader={imageLoader}
                         src={image}
                         alt={`${work.title} ${i + 1}`}
                         width={1000}
                         height={900}
                         className={styles.workImage}
                       />
-                      <div className={styles.imageControls}>
+                      {/* <div className={styles.imageControls}>
                         <a
-                          href={image.src}
+                          href={getImageUrl(image)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className={styles.imageButton}
@@ -108,7 +111,7 @@ const ProjectView: FC<ProjectViewProps> = ({ slug }) => {
                         >
                           <FaImage />
                         </a>
-                      </div>
+                      </div> */}
                     </div>
                   ))}
                 </div>

@@ -68,7 +68,7 @@
   justify-content: center;
   width: 3rem;
   height: 3rem;
-  background-color: var(--accent-light);
+  /* background-color: var(--accent-light); */
   border-radius: 0.75rem;
   color: var(--primary-color);
   font-size: 1.5rem;
@@ -136,6 +136,25 @@
   cursor: not-allowed;
 }
 
+.mapSection {
+    margin-top: 4rem;
+    width: 100%;
+}
+
+.mapWrapper {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.mapWrapper iframe {
+    display: block;
+    width: 100%;
+    height: 450px;
+}
+
+
 @media (max-width: 968px) {
   .content {
     grid-template-columns: 1fr;
@@ -161,6 +180,14 @@
   .infoCard {
     min-width: 100%;
   }
+
+   .mapWrapper {
+        border-radius: 15px;
+    }
+
+    .mapWrapper iframe {
+        height: 350px;
+    }
 }
 
 .errorText {

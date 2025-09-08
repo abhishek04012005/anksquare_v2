@@ -6,6 +6,7 @@ import styles from './Project.module.css'
 import Heading from '@/custom/heading/Heading'
 import Button from '@/custom/buttons/Button'
 import { workProjects } from '@/json/project'
+import imageLoader from '../../../image-loader'
 
 const workCategories = [
   {
@@ -106,6 +107,7 @@ const Project = () => {
             >
               <div className={styles.projectImage}>
                 <Image
+                  loader={imageLoader}
                   src={project.image}
                   alt={project.title}
                   width={400}

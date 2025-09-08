@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 import styles from './Contact.module.css'
 import Heading from '@/custom/heading/Heading'
-import { contactDetails } from '@/json/ditviinfo'
+import { contactDetails } from '@/json/anksquareinfo'
 import { supabase } from '@/lib/supabase'
 
 const contactInfo = [
@@ -215,6 +215,25 @@ const Contact = () => {
                         </button>
                     </motion.form>
                 </div>
+                <motion.div
+                    className={styles.mapSection}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                    <div className={styles.mapWrapper}>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d7195.245036743347!2d85.05075444483947!3d25.6174568519919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sRamjaipal%20Road%2C%20Opp.%20Gola%20Road%2C%20Near%20Hotel%20Magadh%20Palace%2C%20Patna-801503!5e0!3m2!1sen!2sin!4v1757349638039!5m2!1sen!2sin"
+                            width="100%"
+                            height="450"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Anksquare Location"
+                        />
+                    </div>
+                </motion.div>
             </div>
         </section>
     )

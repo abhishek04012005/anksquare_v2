@@ -3,9 +3,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 import styles from './Footer.module.css'
-import { socialLinks } from '@/json/ditviinfo'
-import { contactDetails } from '@/json/ditviinfo'
-import Logo from "../../assets/logofinal.svg";
+import { socialLinks } from '@/json/anksquareinfo'
+import { contactDetails } from '@/json/anksquareinfo'
+import imageLoader from '../../../image-loader'
 
 
 const quickLinks = [
@@ -14,26 +14,26 @@ const quickLinks = [
     { name: 'Services', href: '/services' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Clients', href: '/client' },
     { name: 'Admin', href: '/admin/login' }
 ]
 
-const services = [
-    { name: 'Digital Identity', href: '/services/digital-identity' },
-    { name: 'Branding', href: '/services/branding' },
-    { name: 'Local SEO', href: '/services/seo' },
-    { name: 'Social Media', href: '/services/social-media' },
-    { name: 'Lead Generation', href: '/services/lead-generation' }
+const webdevelopment = [
+    { name: 'Business Website', href: '/service/business-website' },
+    { name: 'E-commerce Website', href: '/service/ecommerce-website' },
+    { name: 'Real Estate Website', href: '/service/real-estate-website' },
+    { name: 'Education Website', href: '/service/education-website' },
 ]
 
 const accountmanagement = [
-    { name: 'Amazon', href: '/services/amazon' },
-    { name: 'Flipkart', href: '/services/flipkart' },
-    { name: 'Blinkit', href: '/services/blinkit' },
-    { name: 'Myntra', href: '/services/myntra' },
-    { name: 'Meesho', href: '/services/meesho' },
-    { name: 'Ajio', href: '/services/ajio' },
-    { name: 'JioMart', href: '/services/jiomart' },
-    { name: 'Nykaa', href: '/services/nykaa' }
+    { name: 'Amazon', href: '/service/amazon' },
+    { name: 'Flipkart', href: '/service/flipkart' },
+    { name: 'Blinkit', href: '/service/blinkit' },
+    { name: 'Myntra', href: '/service/myntra' },
+    { name: 'Meesho', href: '/service/meesho' },
+    { name: 'Ajio', href: '/service/ajio' },
+    { name: 'JioMart', href: '/service/jiomart' },
+    { name: 'Nykaa', href: '/service/nykaa' }
 ]
 
 
@@ -48,7 +48,8 @@ const Footer = () => {
                     <div className={styles.companyInfo}>
                         <Link href="/" className={styles.logo}>
                             <Image
-                                src={Logo}
+                                loader={imageLoader}
+                                src="./logo.svg"
                                 alt="Anksquare"
                                 width={1000}
                                 height={1000}
@@ -87,9 +88,9 @@ const Footer = () => {
                         </div>
 
                         <div className={styles.linkColumn}>
-                            <h3>Services</h3>
+                            <h3>Website Development</h3>
                             <ul>
-                                {services.map((service, index) => (
+                                {webdevelopment.map((service, index) => (
                                     <li key={index}>
                                         <Link href={service.href}>{service.name}</Link>
                                     </li>

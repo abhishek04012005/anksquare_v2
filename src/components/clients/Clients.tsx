@@ -13,6 +13,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import Heading from '@/custom/heading/Heading';
 import Button from '@/custom/buttons/Button';
+import imageLoader from '../../../image-loader';
 
 
 
@@ -75,12 +76,12 @@ const Clients = () => {
                                 <div className={styles.clientCard}>
                                     <div className={styles.logoContainer}>
                                         <Image
+                                            loader={imageLoader}
                                             src={client.logo}
                                             alt={client.name}
                                             width={120}
                                             height={60}
                                             className={styles.clientLogo}
-                                            priority
                                         />
                                     </div>
                                     <div className={styles.clientInfo}>

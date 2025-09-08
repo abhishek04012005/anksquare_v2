@@ -15,6 +15,7 @@ import 'swiper/css/pagination'
 import Heading from '@/custom/heading/Heading'
 import { blogPosts, BlogPost } from '../../json/blog'
 import Button from '@/custom/buttons/Button';
+import imageLoader from '../../../image-loader';
 
 
 interface BlogProps {
@@ -32,6 +33,7 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
         >
             <Link href={`/blog/${post.slug}`} className={styles.imageWrapper}>
                 <Image
+                    loader={imageLoader}
                     src={post.image}
                     alt={post.title}
                     width={400}

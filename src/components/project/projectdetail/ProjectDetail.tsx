@@ -7,6 +7,7 @@ import { FiExternalLink, FiGithub, FiCalendar, FiUsers, FiTag } from 'react-icon
 import { workProjects } from '../../../json/project'
 import styles from './ProjectDetail.module.css'
 import { StaticImageData } from 'next/image'
+import imageLoader from '../../../../image-loader'
 
 interface ProjectDetailProps {
   params: {
@@ -66,7 +67,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ params }) => {
       images: ['/projects/detail1.jpg', '/projects/detail2.jpg', '/projects/detail3.jpg'],
       githubLink: 'https://github.com/project',
       liveLink: 'https://project-demo.com'
-    } as ProjectDetails
+    } as unknown as ProjectDetails
 
     if (currentProject) {
       setProject(currentProject)
@@ -121,6 +122,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ params }) => {
             <div className={styles.showcase}>
               <div className={styles.mainImage}>
                 <Image
+                  loader={imageLoader}
                   src={project.image}
                   alt={project.title}
                   width={1200}

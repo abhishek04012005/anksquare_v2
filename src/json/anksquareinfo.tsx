@@ -22,5 +22,5 @@ export const socialLinks: SocialLink[] = [
 export const contactDetails: ContactDetails = {
   email: 'contact@anksquare.com',
   number: '+91 9939337638',
-  address: 'Near B.D. College, Mithapur Patna-800001'
+  address: 'Ank Square Pvt. Ltd., Ramjaipal Road, Opp. Gola Road, Near Hotel Magadh Palace, Patna-801503'
 };

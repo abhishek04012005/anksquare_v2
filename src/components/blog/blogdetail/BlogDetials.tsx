@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { FiClock, FiUser, FiCalendar, FiLinkedin, FiTwitter, FiFacebook } from 'react-icons/fi'
 import { blogPosts, BlogPost } from '../../../json/blog'
 import styles from './BlogDetails.module.css'
+import imageLoader from '../../../../image-loader'
 
 interface BlogDetailProps {
   params: {
@@ -83,6 +84,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ params }) => {
           >
             <div className={styles.featuredImage}>
               <Image
+                loader={imageLoader}
                 src={post.image}
                 alt={post.title}
                 width={1200}
@@ -95,7 +97,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ params }) => {
 
             <div className={styles.articleContent}>
               <p className={styles.excerpt}>{post.excerpt}</p>
-              
+
               {/* Sample content sections - replace with actual content */}
               <h2>Introduction</h2>
               <p>Detailed introduction goes here...</p>
