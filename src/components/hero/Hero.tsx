@@ -7,6 +7,9 @@ import HeroSvg from "../../custom/svg/HeroSVG/HeroSVG"
 
 import { FaShoppingCart, FaCode, FaChartLine, FaTools } from 'react-icons/fa'
 import type { IconType } from 'react-icons'
+import imageLoader from '../../../image-loader'
+import Image from 'next/image'
+
 
 export interface HeroCard {
   id: number
@@ -36,6 +39,49 @@ export const heroCards: HeroCard[] = [
     icon: FaTools
   }
 ]
+
+// Add these after the existing heroCards array
+
+interface Certificate {
+  id: number;
+  title: string;
+  image: string;
+  alt: string;
+  description: string;
+}
+
+
+export const certificates: Certificate[] = [
+  {
+    id: 1,
+    title: 'Flipkart Partner',
+    image: './services/flipkart.png',
+    alt: 'Flipkart Certified Partner',
+    description: 'Start Your Ecommerce business today with Flipkart Partner'
+  },
+  {
+    id: 2,
+    title: 'Amazon ATES Partner',
+    image: './services/amazon.png',
+    alt: 'Amazon ATES Certified Partner',
+    description: 'Start Your ecommerce business with Certified ATES Amazon Partner'
+  },
+  {
+    id: 3,
+    title: 'JioMart Partner',
+    image: './services/jiomart.png',
+    alt: 'JioMart Certified Partner',
+    description: 'Start your ecommerce business today with JioMart Partner'
+  },
+  {
+    id: 4,
+    title: 'Meesho Partner',
+    image: './services/meesho.png',
+    alt: 'Meesho Certified Partner',
+    description: 'Start your ecommerce business today with Meesho Partner'
+  }
+];
+
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -104,26 +150,44 @@ const Hero = () => {
           ))}
         </div>
 
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className={styles.cardSection}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className={styles.certificateSection}
         >
-          {heroCards.map((card, index) => (
-            <motion.div
-              key={card.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
-              transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-              className={styles.card}
-            >
-              <div className={styles.cardIcon}>
-                <card.icon size={32} />
-              </div>
-              <h3 className={styles.cardTitle}>{card.title}</h3>
-            </motion.div>
-          ))}
+          <h2 className={styles.certSectionTitle}>Work With Certfied Partner Only</h2>
+          <div className={styles.certContainer}>
+            {certificates.map((cert, index) => (
+              <motion.div
+                key={cert.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
+                transition={{ duration: 0.6, delay: 0.5 + index * 0.2 }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
+                }}
+                className={styles.certificateCard}
+              >
+                <div className={styles.certImageWrapper}>
+                  <Image
+                    loader={imageLoader}
+                    src={cert.image}
+                    alt={cert.alt}
+                    width={180}
+                    height={90}
+                    className={styles.certImage}
+                  />
+                </div>
+                <div className={styles.certContent}>
+                  <h3 className={styles.certTitle}>{cert.title}</h3>
+                  <p className={styles.certDescription}>{cert.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
       </div>

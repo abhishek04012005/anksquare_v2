@@ -1,37 +1,18 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Project.module.css'
 import Heading from '@/custom/heading/Heading'
 import Button from '@/custom/buttons/Button'
-import { workProjects } from '@/json/project'
+import { clients } from '@/json/client'
+import { projectCategories } from '@/json/project'
 import imageLoader from '../../../image-loader'
-
-const workCategories = [
-  {
-    id: 'all',
-    name: 'All Projects'
-  },
-  {
-    id: 'business',
-    name: 'Business'
-  },
-  {
-    id: 'education',
-    name: 'Education'
-  },
-  {
-    id: 'events',
-    name: 'Events'
-  }
-]
-
 
 const Project = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [activeCategory, setActiveCategory] = useState('all')
-  const [filteredProjects, setFilteredProjects] = useState(workProjects)
+  const [selectedClient, setSelectedClient] = useState<string | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,92 +36,111 @@ const Project = () => {
     }
   }, [])
 
-  useEffect(() => {
-    setFilteredProjects(
-      activeCategory === 'all'
-        ? workProjects
-        : workProjects.filter(project => project.category === activeCategory)
-    )
-  }, [activeCategory])
+  const filteredWorks = clients.flatMap(client =>
+    client.workDone
+      .filter(work => activeCategory === 'all' || work.type === activeCategory)
+      .map(work => ({
+        ...work,
+        clientName: client.name,
+        clientSlug: client.slug,
+        clientLogo: client.logo
+      }))
+  )
 
   return (
     <section id="work-section" className={styles.work}>
       <div className={styles.container}>
-
         <Heading
-          subtitle='Our Project'
-          title='Featured'
-          titleHighlight='Projects'
+          subtitle='Our Portfolio'
+          title='Recent'
+          titleHighlight='Work'
         />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6 }}
           className={styles.categories}
         >
-          {workCategories.map((category) => (
+          {projectCategories.map((category) => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`${styles.categoryButton} ${activeCategory === category.id ? styles.active : ''
-                }`}
+              className={`${styles.categoryButton} ${
+                activeCategory === category.id ? styles.active : ''
+              }`}
             >
               {category.name}
             </button>
           ))}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isVisible ? 1 : 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className={styles.projectGrid}
-        >
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              className={styles.projectCard}
-            >
-              <div className={styles.projectImage}>
-                <Image
-                  loader={imageLoader}
-                  src={project.image}
-                  alt={project.title}
-                  width={400}
-                  height={300}
-                  className={styles.image}
-                />
-                <div className={styles.overlay}>
-                  <Button href={project.link} variant='primary'>View Project</Button>
+        <AnimatePresence mode='wait'>
+          <motion.div
+            key={activeCategory}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className={styles.projectGrid}
+          >
+            {filteredWorks.map((work, index) => (
+              <motion.div
+                key={`${work.clientSlug}-${work.type}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={styles.projectCard}
+              >
+                <div className={styles.projectImage}>
+                  {work.images?.[0] && (
+                    <Image
+                      loader={imageLoader}
+                      src={work.images[0]}
+                      alt={work.title}
+                      width={400}
+                      height={300}
+                      className={styles.image}
+                    />
+                  )}
+                  <div className={styles.overlay}>
+                    {work.url && (
+                      <Button href={work.url} variant='primary'>
+                        View Live
+                      </Button>
+                    )}
+                    {work.presentationUrl && (
+                      <Button href={work.presentationUrl} variant='secondary'>
+                        View Presentation
+                      </Button>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className={styles.projectInfo}>
-                <h3 className={styles.projectTitle}>{project.title}</h3>
-                <p className={styles.projectDescription}>{project.description}</p>
-                <span className={styles.projectCategory}>
-                  {workCategories.find(cat => cat.id === project.category)?.name}
-                </span>
-              </div>
-              <div className={styles.viewMoreButtonContainer}>
-                <Button
-                  key={project.id}
-                  href={project.link}
-                  variant="primary"
-                  className={styles.viewMoreButton}
-                >
-                  View More
-                </Button>
-              </div>
-            </motion.div>
 
-          ))}
-        </motion.div>
+                <div className={styles.projectInfo}>
+                  <div className={styles.clientInfo}>
+                    <Image
+                      loader={imageLoader}
+                      src={work.clientLogo}
+                      alt={work.clientName}
+                      width={40}
+                      height={40}
+                      className={styles.clientLogo}
+                    />
+                    <span className={styles.clientName}>{work.clientName}</span>
+                  </div>
+                  <h3 className={styles.projectTitle}>{work.title}</h3>
+                  <p className={styles.projectDescription}>{work.description}</p>
+                  <span className={styles.projectCategory}>
+                    {projectCategories.find(cat => cat.id === work.type)?.name}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
-    </section >
+    </section>
   )
 }
 

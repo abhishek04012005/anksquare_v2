@@ -4,7 +4,6 @@ import MerchantAccountSvg from "../custom/svg/AccountManagerSVG/AccountManagerSV
 import WebsiteDevelopmentSvg from "../custom/svg/WebDevelopmentSVG/WebDevelopmentSVG"
 
 
-
 interface ServiceDetail {
     overview: string;
     benefits: {
@@ -457,8 +456,8 @@ export const websiteTypes: SubService[] = [
             'Student Enrollment',
             'Progress Tracking'
         ],
-        path: '/education-website',
-        slug: 'education-website',
+        path: '/education',
+        slug: 'education',
         details: {
             overview: 'Our Education Website service helps institutions deliver online learning with course management and student tracking tools.',
             benefits: [

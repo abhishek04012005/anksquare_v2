@@ -11,9 +11,10 @@ import imageLoader from '../../../../image-loader';
 
 interface ServiceDetailProps {
     service: SubService;
+    city?: string;
 }
 
-const SubServiceDetail = ({ service }: ServiceDetailProps) => {
+const SubServiceDetail = ({ service, city }: ServiceDetailProps) => {
     const [showQuote, setShowQuote] = useState(false);
 
     return (
@@ -35,8 +36,12 @@ const SubServiceDetail = ({ service }: ServiceDetailProps) => {
                                 width={80}
                             />
                         </div>
-                        <h1 className={styles.title}>{service.title}</h1>
-                        <p className={styles.overview}>{service.details.overview}</p>
+                        <h1 className={styles.title}>
+                            {city ? `${service.title}` : service.title}
+                        </h1>
+                        <p className={styles.overview}>
+                            {service.details.overview}
+                        </p>
                         <Button onClick={() => setShowQuote(true)} variant="primary">
                             Get Started
                         </Button>

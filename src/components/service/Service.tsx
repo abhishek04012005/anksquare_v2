@@ -105,7 +105,7 @@ const SubServiceCard = ({ service }: { service: SubService }) => {
                     <li key={index}>{feature}</li>
                 ))}
             </ul>
-            <Button href={`/service/${service.path}`} variant="primary" className={styles.viewDetails}>
+            <Button href={`/service${service.path}`} variant="primary" className={styles.viewDetails}>
                 View Details
             </Button>
         </motion.div>
