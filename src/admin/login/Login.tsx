@@ -7,7 +7,7 @@ import { FiUser, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'
 import { supabase } from '../../lib/supabase'
 import styles from './Login.module.css'
 import { toast } from 'react-hot-toast'
-import DitviLogo from "../../assets/logo.png"
+import imageLoader from '../../../image-loader'
 
 const Login = () => {
     const router = useRouter()
@@ -70,7 +70,8 @@ const Login = () => {
             >
                 <div className={styles.logoContainer}>
                     <Image
-                        src={DitviLogo}
+                        loader={imageLoader}
+                        src="./logo.svg"
                         alt="Anksquare Logo"
                         width={150}
                         height={50}

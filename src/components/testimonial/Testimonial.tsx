@@ -27,43 +27,62 @@ interface TestimonialItem {
 }
 
 const testimonials: TestimonialItem[] = [
-    {
-        id: 1,
-        name: 'Jaya J.',
-        position: 'Founder, PureGlow Skincare',
-        image: './testimonial/jaya.png',
-        quote:
-            'Ank Square helped us launch on Amazon and Flipkart with ease. Their team handled everything—from account setup to product listings—and our sales took off within weeks.',
-        rating: 5
-    },
-    {
-        id: 2,
-        name: 'Ravi Khurana',
-        position: 'Director, Khurana Electronics',
-        image: './testimonial/male.png',
-        quote:
-            'We needed a professional website that could handle bulk orders and customer inquiries. Ank Square delivered a fast, clean site that’s easy to manage and looks great.',
-        rating: 5
-    },
-    {
-        id: 3,
-        name: 'Sneha Joshi',
-        position: 'Operations Head, Urban Threads',
-        image: './testimonial/jaya.png',
-        quote:
-            'Their merchant account management service is top-notch. We now sell on six platforms and Ank Square keeps everything running smoothly—from listings to logistics.',
-        rating: 5
-    },
-    {
-        id: 4,
-        name: 'Manish Verma',
-        position: 'Co-founder, FreshBasket',
-        image: './testimonial/male.png',
-        quote:
-            'Ank Square built our e-commerce site and helped us go live on Blinkit and JioMart. Their support is reliable, and they really understand how online selling works.',
-        rating: 5
-    }
+  {
+    id: 1,
+    name: 'Virendra Bavarva',
+    position: 'Terra Soil Clayart',
+    image: './testimonial/male.png',
+    quote:
+      'Ank Square made our Amazon and Flipkart launch seamless. They handled account setup, product listings, and even guided us on pricing. Our online journey started strong.',
+    rating: 5
+  },
+  {
+    id: 2,
+    name: 'Sunil Kumar Kushwaha',
+    position: 'SM ENTERPRISES',
+    image: './testimonial/male.png',
+    quote:
+      'We were struggling with seller account issues until Ank Square stepped in. Their team took over operations, optimized our listings, and made everything run smoothly.',
+    rating: 5
+  },
+  {
+    id: 3,
+    name: 'Shubham Walia',
+    position: 'Evaware International',
+    image: './testimonial/male.png',
+    quote:
+      'Managing multiple platforms was a challenge. Ank Square now handles our accounts across six marketplaces—keeping listings updated and operations hassle-free.',
+    rating: 5
+  },
+  {
+    id: 4,
+    name: 'Atif Siddiqui',
+    position: 'Maya All Care',
+    image: './testimonial/male.png',
+    quote:
+      'Ank Square helped us onboard Blinkit and JioMart with ease. Their account management service is reliable, and they take care of everything from cataloging to logistics.',
+    rating: 5
+  },
+  {
+    id: 5,
+    name: 'Abbas',
+    position: 'Kaminomoto India',
+    image: './testimonial/male.png',
+    quote:
+      'Thanks to Ank Square, our seller accounts are now professionally managed. They handle listings, updates, and platform coordination so we can focus on growing our brand.',
+    rating: 5
+  },
+  {
+    id: 6,
+    name: 'Raj Aghara',
+    position: 'Backbone Sanitaryware',
+    image: './testimonial/male.png',
+    quote:
+      'We rely on Ank Square for complete account management across marketplaces. Their team ensures smooth operations, timely updates, and consistent support.',
+    rating: 5
+  }
 ]
+
 
 
 const Testimonial: React.FC = () => {

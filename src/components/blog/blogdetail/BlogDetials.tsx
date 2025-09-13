@@ -145,17 +145,6 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ params }) => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className={styles.sidebar}
           >
-            <div className={styles.authorCard}>
-              <Image
-                src="/team/author-avatar.jpg"
-                alt={post.author}
-                width={80}
-                height={80}
-                className={styles.authorImage}
-              />
-              <h3>{post.author}</h3>
-              <p>Expert in {post.category}</p>
-            </div>
 
             <div className={styles.relatedPosts}>
               <h3>Related Articles</h3>
@@ -166,6 +155,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ params }) => {
                   className={styles.relatedPost}
                 >
                   <Image
+                    loader={imageLoader}
                     src={relatedPost.image}
                     alt={relatedPost.title}
                     width={100}

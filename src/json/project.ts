@@ -1,4 +1,3 @@
-import { Client, ProjectWork } from './client'
 
 export const projectCategories = [
   { id: 'all', name: 'All Works' },

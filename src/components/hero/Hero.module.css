@@ -337,3 +337,29 @@
     padding: 1.5rem 0;
   }
 }
+
+.viewCertButton {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.viewCertButton:hover:not(.disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.viewCertButton.disabled {
+  background: var(--primary-color);
+  cursor: not-allowed;
+  opacity: 0.7;
+}

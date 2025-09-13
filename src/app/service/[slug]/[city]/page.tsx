@@ -1,11 +1,10 @@
-import { marketplaceServices } from '@/json/services';
+import { marketplaceServices, websiteTypes } from '@/json/services';
 import { cityMetadata } from '../../../../json/cities';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import SubServiceDetail from '@/components/service/subservicedetail/SubServiceDetail';
 import Script from 'next/script';
 
-// Interface with Promise type
 interface PageProps {
     params: Promise<{
         slug: string;
@@ -13,14 +12,34 @@ interface PageProps {
     }>;
 }
 
-// Helper function to handle Promise params
+// Helper function to normalize slugs with Promise
+async function normalizeSlug(slug: string): Promise<string> {
+    return Promise.resolve(slug.toLowerCase().replace(/\s+/g, '-'));
+}
+
+// Helper function to get services with Promise
+async function getServices(): Promise<typeof marketplaceServices | typeof websiteTypes> {
+    return Promise.resolve([...marketplaceServices, ...websiteTypes]);
+}
+
+// Helper function to get service data with Promise chain
 async function getServiceData(params: Promise<{ slug: string; city: string }>) {
     try {
         const { slug, city } = await params;
-        const [service, cityData] = await Promise.all([
-            marketplaceServices.find(s => s.slug === slug),
-            cityMetadata[city.toLowerCase()]?.services[slug]
+        const [normalizedSlug, allServices] = await Promise.all([
+            normalizeSlug(slug),
+            getServices()
         ]);
+        
+        const servicePromise = Promise.resolve(
+            allServices.find(async s => await normalizeSlug(s.slug) === normalizedSlug)
+        );
+        
+        const cityDataPromise = Promise.resolve(
+            cityMetadata[city.toLowerCase()]?.services[normalizedSlug]
+        );
+
+        const [service, cityData] = await Promise.all([servicePromise, cityDataPromise]);
 
         if (!service || !cityData) {
             throw new Error('Service or city data not found');
@@ -31,32 +50,27 @@ async function getServiceData(params: Promise<{ slug: string; city: string }>) {
         console.error('Error fetching service data:', error);
         return null;
     }
-
-    // try {
-    //     const { slug, city } = await params;
-    //     const service = [...marketplaceServices, ...websiteTypes].find(s => s.slug === slug);
-    //     const cityData = cityMetadata[city.toLowerCase()]?.services[slug];
-
-    //     if (!service || !cityData) {
-    //         throw new Error('Service or city data not found');
-    //     }
-
-    //     return { service, cityData };
-    // } catch (error) {
-    //     console.error('Error fetching service data:', error);
-    //     return null;
-    // }
-
-
 }
 
 export async function generateStaticParams() {
-    return Object.keys(cityMetadata).flatMap(city =>
-        marketplaceServices.map(service => ({
-            slug: service.slug,
-            city: city.toLowerCase()
-        }))
-    );
+    try {
+        const [cities, allServices] = await Promise.all([
+            Promise.resolve(Object.keys(cityMetadata)),
+            getServices()
+        ]);
+        
+        return await Promise.all(
+            cities.flatMap(city =>
+                allServices.map(async service => ({
+                    slug: await normalizeSlug(service.slug),
+                    city: city.toLowerCase()
+                }))
+            )
+        );
+    } catch (error) {
+        console.error('Error generating params:', error);
+        return [];
+    }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -96,17 +110,19 @@ export default async function Page({ params }: PageProps) {
 
         const { service, cityData } = data;
         const resolvedParams = await params;
+        const isWebsite = service.slug.includes('website');
 
-        const localizedService = {
+        const localizedService = await Promise.resolve({
             ...service,
             title: cityData.heading,
             details: {
                 ...service.details,
-                overview: cityData.overview
+                overview: cityData.overview,
+                type: isWebsite ? 'website' : 'marketplace'
             }
-        };
+        });
 
-        const schema = {
+        const schema = await Promise.resolve({
             "@context": "https://schema.org",
             "@type": "Service",
             "name": cityData.heading,
@@ -114,12 +130,12 @@ export default async function Page({ params }: PageProps) {
             "provider": {
                 "@type": "Organization",
                 "name": "Anksquare",
-                areaServed: {
+                "areaServed": {
                     "@type": "City",
                     "name": resolvedParams.city
                 }
             }
-        };
+        });
 
         return (
             <>
@@ -128,8 +144,8 @@ export default async function Page({ params }: PageProps) {
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
                 />
-                <SubServiceDetail
-                    service={localizedService}
+                <SubServiceDetail 
+                    service={localizedService} 
                     city={resolvedParams.city}
                     key={`${resolvedParams.slug}-${resolvedParams.city}`}
                 />

@@ -1,4 +1,3 @@
-import { StaticImageData } from 'next/image'
 import { FC } from 'react'
 import MerchantAccountSvg from "../custom/svg/AccountManagerSVG/AccountManagerSVG"
 import WebsiteDevelopmentSvg from "../custom/svg/WebDevelopmentSVG/WebDevelopmentSVG"
@@ -69,7 +68,7 @@ export const mainServices: MainServiceProps[] = [
         description: 'Create stunning, responsive websites that drive results. Our expert team builds custom solutions using cutting-edge technologies to ensure your online success.',
         features: [
             'Custom Design & Development',
-            'Responsive & Mobile-First',
+            'Responsive UI',
             'SEO Optimization',
             'Performance Tuning',
             'Ongoing Support'
@@ -98,9 +97,9 @@ export const marketplaceServices: SubService[] = [
                 { title: 'Brand Protection', description: 'Maintain brand integrity and manage customer feedback effectively.' }
             ],
             process: [
-                { step: 1, title: 'Account Setup', description: 'Complete account registration and verification process' },
-                { step: 2, title: 'Catalog Optimization', description: 'Product listing creation and optimization' },
-                { step: 3, title: 'Performance Management', description: 'Regular monitoring and optimization of account performance' }
+                { step: 1, title: 'Amazon Seller Account Management Services', description: 'Complete account registration and verification process' },
+                { step: 2, title: 'Account Setup & Onboarding', description: 'Assistance in creating and verifying your Amazon seller account.' },
+                { step: 3, title: 'Product Listing & Catalog Management', description: 'Creation of optimized product titles, descriptions, and bullet points.' },
             ],
             faq: [
                 { question: 'How long does it take to set up an Amazon seller account?', answer: 'Typically, it takes 24-48 hours for the basic setup, but full optimization may take 1-2 weeks.' },
@@ -131,9 +130,9 @@ export const marketplaceServices: SubService[] = [
                 { title: 'Campaign Success', description: 'Manage Flipkart promotions and maximize visibility during sales.' }
             ],
             process: [
-                { step: 1, title: 'Seller Registration', description: 'Complete KYC and seller onboarding' },
-                { step: 2, title: 'Catalog Setup', description: 'Create and optimize product listings' },
-                { step: 3, title: 'Campaign Management', description: 'Run and monitor promotional campaigns' }
+                { step: 1, title: 'Account Setup & Onboarding', description: 'Assistance in creating and activating your Flipkart seller account.' },
+                { step: 2, title: 'Product Listing & Catalog Management', description: 'Optimized product titles, descriptions, and specifications.' },
+                { step: 3, title: 'Keyword Research & SEO Optimization', description: 'Identifying trending keywords for Flipkart search.' }
             ],
             faq: [
                 { question: 'Can you help with Flipkart promotions?', answer: 'Yes, we assist with campaign setup, targeting, and performance tracking.' },
@@ -164,9 +163,9 @@ export const marketplaceServices: SubService[] = [
                 { title: 'Geo-Targeting', description: 'Customize listings based on delivery zones and demand.' }
             ],
             process: [
-                { step: 1, title: 'Partner Onboarding', description: 'Register and configure Blinkit seller account' },
-                { step: 2, title: 'Inventory Sync', description: 'Connect product feed and stock levels' },
-                { step: 3, title: 'Geo Optimization', description: 'Tailor listings for local delivery zones' }
+                { step: 1, title: 'Account Setup & Onboarding', description: 'Assistance in creating and activating your Blinkit seller account.' },
+                { step: 2, title: 'Product Listing & Catalog Management', description: 'Uploading and optimizing product details (titles, descriptions, prices).' },
+                { step: 3, title: 'Inventory & Stock Management', description: 'Real-time stock monitoring to avoid out-of-stock issues.' }
             ],
             faq: [
                 { question: 'Is Blinkit suitable for FMCG?', answer: 'Yes, it\'s ideal for fast-moving consumer goods and local delivery.' },
@@ -197,9 +196,9 @@ export const marketplaceServices: SubService[] = [
                 { title: 'Trend Alignment', description: 'Stay ahead with data-backed fashion insights.' }
             ],
             process: [
-                { step: 1, title: 'Brand Onboarding', description: 'Register and verify fashion brand' },
-                { step: 2, title: 'Store Design', description: 'Create branded storefront with curated collections' },
-                { step: 3, title: 'Campaign Execution', description: 'Launch seasonal promotions and track results' }
+                { step: 1, title: 'Account Setup & Onboarding', description: 'Assistance in creating and activating your Myntra seller account.' },
+                { step: 2, title: 'Product Listing & Catalog Management', description: 'Creating optimized product titles, descriptions, and attributes.' },
+                { step: 3, title: 'Inventory & Stock Management', description: 'Monitoring stock levels to avoid out of stock issues.' }
             ],
             faq: [
                 { question: 'Can you help with Myntra brand store setup?', answer: 'Yes, we design and configure your store to match brand guidelines.' },
@@ -218,7 +217,7 @@ export const marketplaceServices: SubService[] = [
         features: [
             'Reseller-Friendly Listings',
             'Bulk Upload Assistance',
-            'COD & Logistics Setup',
+            'Promotions & Campaigns',
         ],
         path: '/meesho',
         slug: 'meesho',
@@ -230,9 +229,9 @@ export const marketplaceServices: SubService[] = [
                 { title: 'Logistics Simplified', description: 'Enable COD and streamline delivery setup.' }
             ],
             process: [
-                { step: 1, title: 'Seller Setup', description: 'Register and verify Meesho seller account' },
-                { step: 2, title: 'Catalog Upload', description: 'Bulk upload products with optimized descriptions' },
-                { step: 3, title: 'Logistics Integration', description: 'Configure delivery and payment options' }
+                { step: 1, title: 'Account Setup & Onboarding', description: 'Assistance in creating and activating your Meesho seller account.' },
+                { step: 2, title: 'Product Listing & Catalog Management', description: 'Optimized product titles, descriptions, and specifications.' },
+                { step: 3, title: 'Keyword Research & SEO Optimization', description: 'Identifying trending keywords on Meesho.' }
             ],
             faq: [
                 { question: 'Is Meesho good for small sellers?', answer: 'Yes, it\'s ideal for resellers and small businesses.' },
@@ -263,9 +262,9 @@ export const marketplaceServices: SubService[] = [
                 { title: 'Smart Pricing', description: 'Implement discount strategies that drive sales without compromising margins.' }
             ],
             process: [
-                { step: 1, title: 'Brand Onboarding', description: 'Complete Ajio’s seller registration and brand approval process.' },
-                { step: 2, title: 'Catalog Compliance', description: 'Structure listings to meet Ajio’s fashion and content standards.' },
-                { step: 3, title: 'Pricing Strategy', description: 'Apply dynamic pricing and discount models for seasonal campaigns.' }
+                { step: 1, title: 'Account Setup & Onboarding', description: 'Assistance with creating and activating your Ajio seller account.' },
+                { step: 2, title: 'Product Listing & Catalog Management', description: 'Crafting optimized product titles, descriptions, and attributes.' },
+                { step: 3, title: 'Inventory & Stock Management', description: 'Demand-based stock planning for fashion & lifestyle products.' }
             ],
             faq: [
                 { question: 'Is Ajio suitable for premium fashion brands?', answer: 'Yes, Ajio is ideal for curated fashion labels looking for premium positioning.' },
@@ -296,9 +295,9 @@ export const marketplaceServices: SubService[] = [
                 { title: 'Fulfillment Efficiency', description: 'Streamline order processing and delivery coordination.' }
             ],
             process: [
-                { step: 1, title: 'Vendor Registration', description: 'Complete onboarding and portal setup for JioMart.' },
-                { step: 2, title: 'Product Listings', description: 'Upload and optimize grocery and FMCG items.' },
-                { step: 3, title: 'Order Fulfillment', description: 'Integrate logistics and monitor delivery performance.' }
+                { step: 1, title: 'Account Setup & Onboarding', description: 'Assistance with creating and activating your JioMart seller account.' },
+                { step: 2, title: 'Product Listing & Catalog Management', description: 'Optimized product titles, descriptions, and attributes.' },
+                { step: 3, title: 'Inventory & Stock Management', description: 'Real-time stock monitoring to avoid cancellations.' }
             ],
             faq: [
                 { question: 'Is JioMart suitable for grocery sellers?', answer: 'Yes, it’s built for high-volume FMCG and grocery distribution.' },
@@ -329,9 +328,9 @@ export const marketplaceServices: SubService[] = [
                 { title: 'Influencer Reach', description: 'Coordinate campaigns with Nykaa’s influencer ecosystem.' }
             ],
             process: [
-                { step: 1, title: 'Seller Registration', description: 'Complete Nykaa’s onboarding and brand approval.' },
-                { step: 2, title: 'Page Design', description: 'Create a branded storefront with curated visuals and copy.' },
-                { step: 3, title: 'Campaign Coordination', description: 'Plan influencer collaborations and seasonal promotions.' }
+                { step: 1, title: 'Account Setup & Onboarding', description: 'Assistance with creating and activating your Nykaa seller account.' },
+                { step: 2, title: 'Product Listing & Catalog Management', description: 'Creating optimized titles, descriptions, and attributes as per Nykaa standards.' },
+                { step: 3, title: 'Inventory & Stock Management', description: 'Demand forecasting for seasonal beauty & wellness trends.' }
             ],
             faq: [
                 { question: 'Can you help with Nykaa brand page design?', answer: 'Yes, we create visually engaging pages that meet Nykaa’s standards.' },

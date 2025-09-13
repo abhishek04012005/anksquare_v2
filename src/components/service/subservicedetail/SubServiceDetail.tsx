@@ -16,6 +16,8 @@ interface ServiceDetailProps {
 
 const SubServiceDetail = ({ service, city }: ServiceDetailProps) => {
     const [showQuote, setShowQuote] = useState(false);
+    const isWebsiteService = service.slug.includes('website');
+
 
     return (
         <div className={styles.serviceDetail}>
@@ -40,7 +42,10 @@ const SubServiceDetail = ({ service, city }: ServiceDetailProps) => {
                             {city ? `${service.title}` : service.title}
                         </h1>
                         <p className={styles.overview}>
-                            {service.details.overview}
+                            {isWebsiteService
+                                ? `Professional ${service.title.toLowerCase()} development services in ${city}. ${service.details.overview}`
+                                : `Expert ${service.title} services in ${city}. ${service.details.overview}`
+                            }
                         </p>
                         <Button onClick={() => setShowQuote(true)} variant="primary">
                             Get Started
@@ -91,41 +96,6 @@ const SubServiceDetail = ({ service, city }: ServiceDetailProps) => {
                                 <div className={styles.stepNumber}>{step.step}</div>
                                 <h3>{step.title}</h3>
                                 <p>{step.description}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </section>
-
-                <section className={styles.pricing}>
-                    <Heading
-                        subtitle="Pricing"
-                        title="Choose Your"
-                        titleHighlight="Plan"
-                    />
-                    <div className={styles.pricingGrid}>
-                        {service.details.pricing.map((plan, index) => (
-                            <motion.div
-                                key={index}
-                                className={styles.pricingCard}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                            >
-                                <h3>{plan.plan}</h3>
-                                <div className={styles.price}>{plan.price}</div>
-                                <ul>
-                                    {plan.features.map((feature, idx) => (
-                                        <li key={idx}>{feature}</li>
-                                    ))}
-                                </ul>
-                                <Button
-                                    onClick={() => setShowQuote(true)}
-                                    variant="primary"
-                                    className={styles.pricingButton}
-                                >
-                                    Get Started
-                                </Button>
                             </motion.div>
                         ))}
                     </div>

@@ -4,11 +4,13 @@ import { motion } from 'framer-motion'
 import styles from './Hero.module.css'
 import Button from '@/custom/buttons/Button'
 import HeroSvg from "../../custom/svg/HeroSVG/HeroSVG"
-
 import { FaShoppingCart, FaCode, FaChartLine, FaTools } from 'react-icons/fa'
 import type { IconType } from 'react-icons'
 import imageLoader from '../../../image-loader'
 import Image from 'next/image'
+import Link from 'next/link';
+import { certificates, Certificate } from '../../json/certificates';
+
 
 
 export interface HeroCard {
@@ -40,47 +42,6 @@ export const heroCards: HeroCard[] = [
   }
 ]
 
-// Add these after the existing heroCards array
-
-interface Certificate {
-  id: number;
-  title: string;
-  image: string;
-  alt: string;
-  description: string;
-}
-
-
-export const certificates: Certificate[] = [
-  {
-    id: 1,
-    title: 'Flipkart Partner',
-    image: './services/flipkart.png',
-    alt: 'Flipkart Certified Partner',
-    description: 'Start Your Ecommerce business today with Flipkart Partner'
-  },
-  {
-    id: 2,
-    title: 'Amazon ATES Partner',
-    image: './services/amazon.png',
-    alt: 'Amazon ATES Certified Partner',
-    description: 'Start Your ecommerce business with Certified ATES Amazon Partner'
-  },
-  {
-    id: 3,
-    title: 'JioMart Partner',
-    image: './services/jiomart.png',
-    alt: 'JioMart Certified Partner',
-    description: 'Start your ecommerce business today with JioMart Partner'
-  },
-  {
-    id: 4,
-    title: 'Meesho Partner',
-    image: './services/meesho.png',
-    alt: 'Meesho Certified Partner',
-    description: 'Start your ecommerce business today with Meesho Partner'
-  }
-];
 
 
 const Hero = () => {
@@ -101,17 +62,17 @@ const Hero = () => {
             className={styles.textContent}
           >
             <h1 className={styles.title}>
-              Grow Your Business Online with Smart{' '}
-              <span className={styles.highlight}>Website & Marketplace Solutions</span>
+              Grow Your Online Business with Smart{' '}
+              <span className={styles.highlight}>Marketplace Solutions</span>
             </h1>
             <p className={styles.description}>
-              We help you sell online with ease. From building professional websites to setting up and managing your seller accounts on platforms like Amazon and Flipkart, we make sure your business runs smoothly and reaches more customers.
-            </p>
+              We help businesses sell their products online by taking care of their seller accounts on platforms like Amazon, Flipkart and Others. From setting up your account to improving your product listings and handling daily tasks—we manage it all so your business runs smoothly.
+              We also build custom websites that match your brand and help you look professional online. Plus, we offer branding solutions to make your business stand out and be easily recognized.            </p>
 
 
             <div className={styles.cta}>
               <Button href="/services" variant="primary">
-                Explore Our Work
+                Explore Our Solutions
               </Button>
               <Button href="/contact" variant="secondary">
                 Get in Touch
@@ -134,7 +95,7 @@ const Hero = () => {
         <div className={styles.stats}>
           {[
             { number: '500+', text: 'Projects Completed' },
-            { number: '100+', text: 'Happy Clients' },
+            { number: '300+', text: 'Happy Clients' },
             { number: '5+', text: 'Years Experience' }
           ].map((stat, index) => (
             <motion.div
@@ -157,7 +118,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className={styles.certificateSection}
         >
-          <h2 className={styles.certSectionTitle}>Work With Certfied Partner Only</h2>
+          <h2 className={styles.certSectionTitle}>Work With Certified Partner Only</h2>
           <div className={styles.certContainer}>
             {certificates.map((cert, index) => (
               <motion.div
@@ -174,7 +135,7 @@ const Hero = () => {
                 <div className={styles.certImageWrapper}>
                   <Image
                     loader={imageLoader}
-                    src={cert.image}
+                    src={cert.logo}
                     alt={cert.alt}
                     width={180}
                     height={90}
@@ -184,6 +145,21 @@ const Hero = () => {
                 <div className={styles.certContent}>
                   <h3 className={styles.certTitle}>{cert.title}</h3>
                   <p className={styles.certDescription}>{cert.description}</p>
+                  {cert.hasViewOption ? (
+                    <Link
+                      href={`/certificate/${cert.slug}`}
+                      className={styles.viewCertButton}
+                    >
+                      View Certificate
+                    </Link>
+                  ) : (
+                    <button
+                      className={`${styles.viewCertButton} ${styles.disabled}`}
+                      disabled
+                    >
+                      Coming Soon
+                    </button>
+                  )}
                 </div>
               </motion.div>
             ))}

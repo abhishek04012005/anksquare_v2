@@ -13,20 +13,29 @@ export interface CityMetadata {
     services: Record<string, ServiceMetadata>;
 }
 
-const createServiceMetadata = (city: string, state: string, service: string): ServiceMetadata => ({
-    title: `${service} Account Management Services in ${city} ${state} | E-commerce Solutions | Ank Square Pvt. Ltd.`,
-    description: `Professional ${service} services in ${city}. Get expert support for complete business management and growth.`,
-    heading: `${service} Account Management Services in ${city} ${state}`,
-    subHeading: `Grow Your Business in ${state}`,
-    overview: `Transform your business with our specialized ${service} services in ${city}. Our local experts help ${city} businesses thrive with tailored solutions.`
-});
-
+// Update the services array
 const services = [
-    'Amazon', 'Flipkart', 'Blinkit', 'Myntra',
-    'Meesho', 'AJIO', 'JioMart', 'Nykaa',
-    'Business Website', 'E-commerce Website', 
-    'Real Estate Website', 'Education Website'
+    'amazon', 'flipkart', 'blinkit', 'myntra',
+    'meesho', 'ajio', 'jiomart', 'nykaa',
+    'business-website', 'ecommerce-website', 
+    'real-estate-website', 'education-website'
 ] as const;
+
+// Update createServiceMetadata function to handle website services
+const createServiceMetadata = (city: string, state: string, service: string): ServiceMetadata => {
+    const isWebsite = service.includes('website');
+    const title = isWebsite 
+        ? `${service.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')} Development in ${city} ${state}`
+        : `${service.charAt(0).toUpperCase() + service.slice(1)} Services in ${city} ${state}`;
+
+    return {
+        title: `${title} | Professional Solutions | Ank Square Pvt. Ltd.`,
+        description: `Professional ${service.toLowerCase()} ${isWebsite ? 'development' : 'management'} services in ${city}. Get expert support for complete ${isWebsite ? 'web solutions' : 'business growth'}.`,
+        heading: title,
+        subHeading: `Grow Your Business in ${state}`,
+        overview: `Transform your business with our specialized ${service.toLowerCase()} ${isWebsite ? 'development' : ''} services in ${city}. Our local experts help ${city} businesses thrive with tailored solutions.`
+    };
+};
 
 export const cities = [
     { name: "Chirala", state: "Andhra Pradesh" },
@@ -1490,7 +1499,6 @@ export const cities = [
     { name: "Nalanda", state: "Bihar" },
     { name: "Gopalganj", state: "Bihar" },
 
-    // Assam minor towns
 
 
     // Odisha minor towns
@@ -1833,10 +1841,6 @@ export const cities = [
     { name: "Dhule", state: "Maharashtra" },
     { name: "Gadchiroli", state: "Maharashtra" },
     { name: "Gondia", state: "Maharashtra" },
-
-
-
-
 ] as const;
 
 
