@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import styles from './Service.module.css'
 import Button from '@/custom/buttons/Button'
 import GetQuotePopup from '@/custom/getquotepopup/GetQuotePopup'
-import { mainServices, marketplaceServices, websiteTypes } from '../../json/services'
+import { mainServices, marketplaceServices, websiteTypes, digitalMarketingTypes } from '../../json/services'
 
 import { StaticImageData } from 'next/image';
 import Heading from '@/custom/heading/Heading'
@@ -121,7 +121,7 @@ const Services = () => {
                     titleHighlight="Digital Expertise"
                 />
 
-                {mainServices.map((service, index) => (
+                  {mainServices.map((service, index) => (
                     <div key={service.id} className={styles.serviceBlock}>
                         <MainService
                             service={service}
@@ -130,14 +130,20 @@ const Services = () => {
 
                         <div className={styles.subServices}>
                             <h2 className={styles.subTitle}>
-                                {index === 0 ? 'Marketplace Solutions' : 'Website Solutions'}
+                                {index === 0 ? 'Marketplace Solutions' : 
+                                 index === 1 ? 'Website Solutions' : 
+                                 'Digital Marketing Solutions'}
                             </h2>
                             <div className={styles.cardGrid}>
                                 {index === 0
                                     ? marketplaceServices.map(service => (
                                         <SubServiceCard key={service.id} service={service} />
                                     ))
-                                    : websiteTypes.map(service => (
+                                    : index === 1
+                                    ? websiteTypes.map(service => (
+                                        <SubServiceCard key={service.id} service={service} />
+                                    ))
+                                    : digitalMarketingTypes.map(service => (
                                         <SubServiceCard key={service.id} service={service} />
                                     ))
                                 }

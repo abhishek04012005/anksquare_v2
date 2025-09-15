@@ -18,24 +18,42 @@ const services = [
     'amazon', 'flipkart', 'blinkit', 'myntra',
     'meesho', 'ajio', 'jiomart', 'nykaa',
     'business-website', 'ecommerce-website', 
-    'real-estate-website', 'education-website'
+    'real-estate-website', 'education-website',
+    'facebook-marketing', 'instagram-marketing', 'google-ads',
+    'youtube-marketing', 
+
 ] as const;
 
 // Update createServiceMetadata function to handle website services
 const createServiceMetadata = (city: string, state: string, service: string): ServiceMetadata => {
     const isWebsite = service.includes('website');
-    const title = isWebsite 
-        ? `${service.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')} Development in ${city} ${state}`
-        : `${service.charAt(0).toUpperCase() + service.slice(1)} Services in ${city} ${state}`;
+    const isDigital = service.includes('digital');
+
+    let title = '';
+    if (isWebsite) {
+        title = `${service
+            .split('-')
+            .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+            .join(' ')} Development in ${city} ${state}`;
+    } else if (isDigital) {
+        title = `${service
+            .replace('digital-marketing', 'Digital Marketing')
+            .split('-')
+            .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+            .join(' ')} Services in ${city} ${state}`;
+    } else {
+        title = `${service.charAt(0).toUpperCase() + service.slice(1)} Services in ${city} ${state}`;
+    }
 
     return {
         title: `${title} | Professional Solutions | Ank Square Pvt. Ltd.`,
-        description: `Professional ${service.toLowerCase()} ${isWebsite ? 'development' : 'management'} services in ${city}. Get expert support for complete ${isWebsite ? 'web solutions' : 'business growth'}.`,
+        description: `Professional ${service.toLowerCase()} ${isWebsite ? 'development' : isDigital ? 'strategy & execution' : 'management'} services in ${city}. Get expert support for complete ${isWebsite ? 'web solutions' : isDigital ? 'digital growth' : 'business expansion'}.`,
         heading: title,
         subHeading: `Grow Your Business in ${state}`,
-        overview: `Transform your business with our specialized ${service.toLowerCase()} ${isWebsite ? 'development' : ''} services in ${city}. Our local experts help ${city} businesses thrive with tailored solutions.`
+        overview: `Transform your business with our specialized ${service.toLowerCase()} ${isWebsite ? 'development' : isDigital ? 'campaigns and outreach' : ''} services in ${city}. Our local experts help ${city} businesses thrive with tailored solutions.`
     };
 };
+
 
 export const cities = [
     { name: "Chirala", state: "Andhra Pradesh" },

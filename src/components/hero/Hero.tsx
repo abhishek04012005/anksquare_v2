@@ -9,7 +9,7 @@ import type { IconType } from 'react-icons'
 import imageLoader from '../../../image-loader'
 import Image from 'next/image'
 import Link from 'next/link';
-import { certificates, Certificate } from '../../json/certificates';
+import { certificates } from '../../json/certificates';
 
 
 
@@ -118,7 +118,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className={styles.certificateSection}
         >
-          <h2 className={styles.certSectionTitle}>Work With Certified Partner Only</h2>
+          <h2 className={styles.certSectionTitle}>Work With Certified e-Commerce Account Management Partner Only</h2>
           <div className={styles.certContainer}>
             {certificates.map((cert, index) => (
               <motion.div
@@ -157,7 +157,7 @@ const Hero = () => {
                       className={`${styles.viewCertButton} ${styles.disabled}`}
                       disabled
                     >
-                      Coming Soon
+                      View Certificate
                     </button>
                   )}
                 </div>

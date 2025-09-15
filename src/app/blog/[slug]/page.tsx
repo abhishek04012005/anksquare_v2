@@ -8,7 +8,6 @@ interface PageProps {
     params: Promise<{ slug: string }>
 }
 
-// Helper function to get blog data with Promise
 async function getBlogData(params: Promise<{ slug: string }>): Promise<BlogPost | null> {
     try {
         const resolvedParams = await params;
@@ -21,7 +20,6 @@ async function getBlogData(params: Promise<{ slug: string }>): Promise<BlogPost 
     }
 }
 
-// Generate static paths for all blog posts
 export async function generateStaticParams() {
     return Promise.resolve(
         blogPosts.map((post) => ({
@@ -30,7 +28,6 @@ export async function generateStaticParams() {
     );
 }
 
-// Generate SEO metadata for each blog post
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const post = await getBlogData(params);
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://anksquare.com';
@@ -39,9 +36,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         return {
             title: 'Post Not Found | Anksquare Blog',
             description: 'The requested blog post could not be found',
-            robots: 'noindex, nofollow'
+            robots: 'noindex, nofollow',
+            alternates: {
+                canonical: `${baseUrl}/blog`
+            }
         };
     }
+
+
 
     return {
         title: `${post.title} | Expert E-commerce Insights | Anksquare Blog`,
@@ -58,10 +60,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
                     url: `${baseUrl}${post.image}`,
                     width: 1200,
                     height: 630,
-                    alt: post.title,
+                    alt: `Featured image for article: ${post.title}`,
                 }
             ],
-            siteName: 'Anksquare',
+            siteName: 'Anksquare Blog',
+            locale: 'en_IN',
         },
         twitter: {
             card: 'summary_large_image',
@@ -69,12 +72,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             description: post.excerpt,
             images: [`${baseUrl}${post.image}`],
             creator: '@anksquare',
+            site: '@anksquare',
         },
         alternates: {
             canonical: `${baseUrl}/blog/${post.slug}`,
         },
-        authors: [{ name: post.author }],
-
+        authors: [{ name: post.author, url: `${baseUrl}/author/${post.author.toLowerCase().replace(' ', '-')}` }],
+        category: post.category,
     };
 }
 
@@ -87,7 +91,6 @@ export default async function BlogPage({ params }: PageProps) {
 
     return (
         <>
-            {/* Add structured data for blog post */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -102,6 +105,7 @@ export default async function BlogPage({ params }: PageProps) {
                         author: {
                             '@type': 'Person',
                             name: post.author,
+                            url: `${process.env.NEXT_PUBLIC_BASE_URL}/author/${post.author.toLowerCase().replace(' ', '-')}`
                         },
                         publisher: {
                             '@type': 'Organization',
@@ -117,13 +121,17 @@ export default async function BlogPage({ params }: PageProps) {
                         },
                         keywords: [post.category, 'e-commerce', 'marketplace', 'online selling'],
                         articleSection: post.category,
-                        timeRequired: post.readTime
+                        timeRequired: post.readTime,
+                        articleBody: post.content,
+                        inLanguage: 'en-IN',
+                        accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+                        accessibilityHazard: 'NoFlashingHazard',
+                        accessibilityFeature: ['largePrint', 'highContrast']
                     })
                 }}
             />
-
-            <BlogDetail 
-                params={await params} 
+            <BlogDetail
+                params={post}
             />
         </>
     );

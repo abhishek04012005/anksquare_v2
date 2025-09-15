@@ -1,4 +1,4 @@
-import { marketplaceServices, websiteTypes } from '@/json/services';
+import { marketplaceServices, websiteTypes, digitalMarketingTypes } from '@/json/services';
 import SubServiceDetail from '../../../components/service/subservicedetail/SubServiceDetail';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -8,7 +8,7 @@ export interface PageProps {
 }
 
 export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
-  return [...marketplaceServices, ...websiteTypes].map((service) => ({
+  return [...marketplaceServices, ...websiteTypes, ...digitalMarketingTypes].map((service) => ({
     slug: service.slug,
   }));
 }
@@ -17,7 +17,7 @@ export async function generateMetadata(
   { params }: PageProps
 ): Promise<Metadata> {
   const resolvedParams = await params;
-  const service = [...marketplaceServices, ...websiteTypes].find(
+  const service = [...marketplaceServices, ...websiteTypes, ...digitalMarketingTypes].find(
     (s) => s.slug === resolvedParams.slug
   );
 
@@ -36,7 +36,7 @@ export async function generateMetadata(
 
 export default async function Page({ params }: PageProps) {
   const resolvedParams = await params;
-  const service = [...marketplaceServices, ...websiteTypes].find(
+  const service = [...marketplaceServices, ...websiteTypes, ...digitalMarketingTypes].find(
     (s) => s.slug === resolvedParams.slug
   );
 

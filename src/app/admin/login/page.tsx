@@ -25,7 +25,7 @@ export default async function LoginPage() {
     // Handle error gracefully
     return (
       <div>
-        <p>Authentication error. Please try again later.</p>
+        <Login />
       </div>
     )
   }

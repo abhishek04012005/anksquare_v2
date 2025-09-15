@@ -17,6 +17,7 @@ interface ServiceDetailProps {
 const SubServiceDetail = ({ service, city }: ServiceDetailProps) => {
     const [showQuote, setShowQuote] = useState(false);
     const isWebsiteService = service.slug.includes('website');
+    const isDigitalMarketing = service.slug.includes('marketing');
 
 
     return (
@@ -41,9 +42,11 @@ const SubServiceDetail = ({ service, city }: ServiceDetailProps) => {
                         <h1 className={styles.title}>
                             {city ? `${service.title}` : service.title}
                         </h1>
-                        <p className={styles.overview}>
+                       <p className={styles.overview}>
                             {isWebsiteService
                                 ? `Professional ${service.title.toLowerCase()} development services in ${city}. ${service.details.overview}`
+                                : isDigitalMarketing
+                                ? `Strategic ${service.title} services in ${city}. ${service.details.overview}`
                                 : `Expert ${service.title} services in ${city}. ${service.details.overview}`
                             }
                         </p>

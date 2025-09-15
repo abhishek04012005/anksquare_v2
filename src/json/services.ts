@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import MerchantAccountSvg from "../custom/svg/AccountManagerSVG/AccountManagerSVG"
 import WebsiteDevelopmentSvg from "../custom/svg/WebDevelopmentSVG/WebDevelopmentSVG"
+import SocialMediaSvg from "../custom/svg/SocialMediaSVG/SocialMediaSVG"
 
 
 interface ServiceDetail {
@@ -75,6 +76,20 @@ export const mainServices: MainServiceProps[] = [
         ],
         image: WebsiteDevelopmentSvg,
         path: '/services/web-development'
+    },
+    {
+        id: 3,
+        title: 'Digital Marketing',
+        description: 'Boost your online visibility and drive targeted traffic with our comprehensive digital marketing solutions. From SEO to paid ads, we help your brand grow across every channel.',
+        features: [
+            'Search Engine Optimization (SEO)',
+            'Social Media Marketing',
+            'Google & Meta Ads',
+            'Content Strategy',
+            'Performance Analytics'
+        ],
+        image: SocialMediaSvg, // Replace with your actual SVG or image reference
+        path: '/services/digital-marketing'
     }
 ]
 export const marketplaceServices: SubService[] = [
@@ -480,3 +495,138 @@ export const websiteTypes: SubService[] = [
         }
     }
 ]
+
+export const digitalMarketingTypes: SubService[] = [
+  {
+    id: 1,
+    title: 'Instagram Marketing',
+    logo: './services/instagram.svg',
+    features: [
+      'Visual Content Strategy',
+      'Reels & Story Campaigns',
+      'Hashtag Optimization'
+    ],
+    path: '/instagram-marketing',
+    slug: 'instagram-marketing',
+    details: {
+      overview: 'Our Instagram Marketing service helps brands grow through engaging visuals, reels, and targeted campaigns that drive discovery and interaction.',
+      benefits: [
+        { title: 'Audience Engagement', description: 'Connect with followers through stories, reels, and interactive posts.' },
+        { title: 'Brand Visibility', description: 'Use trending hashtags and visual storytelling to boost reach.' },
+        { title: 'Lead Generation', description: 'Drive traffic to your website or product pages via bio links and swipe-ups.' }
+      ],
+      process: [
+        { step: 1, title: 'Profile Audit', description: 'Review your current Instagram presence and identify growth opportunities.' },
+        { step: 2, title: 'Content Planning', description: 'Design a calendar of posts, reels, and stories aligned with your goals.' },
+        { step: 3, title: 'Campaign Execution', description: 'Launch and monitor campaigns with performance tracking.' }
+      ],
+      faq: [
+        { question: 'Do you create reels?', answer: 'Yes, we design and edit reels tailored to your brand and audience.' },
+        { question: 'Can I track engagement?', answer: 'Absolutely. We provide weekly reports with insights on reach, likes, and clicks.' }
+      ],
+      pricing: [
+        { plan: 'Starter', price: '₹9,999', features: ['15 Posts', '5 Reels', 'Hashtag Strategy'] },
+        { plan: 'Growth', price: '₹19,999', features: ['30 Posts', '10 Reels', 'Story Highlights & Analytics'] }
+      ]
+    }
+  },
+  {
+    id: 2,
+    title: 'Facebook Marketing',
+    logo: './services/facebook.svg',
+    features: [
+      'Ad Campaigns',
+      'Page Optimization',
+      'Audience Targeting'
+    ],
+    path: '/facebook-marketing',
+    slug: 'facebook-marketing',
+    details: {
+      overview: 'Our Facebook Marketing service helps businesses reach targeted audiences through paid ads, optimized pages, and community engagement.',
+      benefits: [
+        { title: 'Targeted Reach', description: 'Run ads based on location, interests, and demographics.' },
+        { title: 'Page Growth', description: 'Optimize your business page for credibility and conversions.' },
+        { title: 'Lead Funnels', description: 'Use lead forms and messenger bots to capture inquiries.' }
+      ],
+      process: [
+        { step: 1, title: 'Audience Research', description: 'Define your ideal customer and ad targeting strategy.' },
+        { step: 2, title: 'Ad Setup & Design', description: 'Create compelling ad creatives and copy.' },
+        { step: 3, title: 'Monitoring & Optimization', description: 'Track performance and adjust campaigns for better ROI.' }
+      ],
+      faq: [
+        { question: 'Do you manage ad budgets?', answer: 'Yes, we help allocate and optimize your ad spend for maximum results.' },
+        { question: 'Can I run lead generation ads?', answer: 'Definitely. We specialize in Facebook Lead Ads and Messenger campaigns.' }
+      ],
+      pricing: [
+        { plan: 'Basic Ads', price: '₹12,999', features: ['2 Campaigns', 'Ad Creatives', 'Audience Setup'] },
+        { plan: 'Advanced Ads', price: '₹24,999', features: ['Multiple Campaigns', 'Retargeting', 'Performance Reports'] }
+      ]
+    }
+  },
+  {
+    id: 3,
+    title: 'Google Ads',
+    logo: './services/linkedin.svg',
+    features: [
+      'Professional Branding',
+      'Content Strategy',
+      'Connection Outreach'
+    ],
+    path: '/google-ads',
+    slug: 'google-ads',
+    details: {
+      overview: 'Our LinkedIn Marketing service helps professionals and B2B brands build authority, grow networks, and generate qualified leads.',
+      benefits: [
+        { title: 'Thought Leadership', description: 'Share valuable insights and build credibility in your industry.' },
+        { title: 'Lead Generation', description: 'Connect with decision-makers through targeted outreach and messaging.' },
+        { title: 'Profile Optimization', description: 'Enhance your company page and personal profile for visibility.' }
+      ],
+      process: [
+        { step: 1, title: 'Profile Audit', description: 'Review and optimize your LinkedIn presence.' },
+        { step: 2, title: 'Content Planning', description: 'Create posts, articles, and engagement strategies.' },
+        { step: 3, title: 'Outreach & Reporting', description: 'Connect with prospects and track engagement.' }
+      ],
+      faq: [
+        { question: 'Do you write LinkedIn posts?', answer: 'Yes, we craft professional content tailored to your audience.' },
+        { question: 'Can I use LinkedIn for B2B leads?', answer: 'Absolutely. It’s one of the best platforms for B2B outreach.' }
+      ],
+      pricing: [
+        { plan: 'Starter', price: '₹11,999', features: ['Profile Setup', '10 Posts', 'Connection Strategy'] },
+        { plan: 'Pro Network', price: '₹22,999', features: ['20 Posts', 'Outreach Campaigns', 'Lead Tracking'] }
+      ]
+    }
+  },
+  {
+    id: 4,
+    title: 'YouTube Marketing',
+    logo: './services/youtube.svg',
+    features: [
+      'Video Strategy',
+      'Channel Optimization',
+      'Ad Campaigns'
+    ],
+    path: '/youtube-marketing',
+    slug: 'youtube-marketing',
+    details: {
+      overview: 'Our YouTube Marketing service helps brands grow through engaging video content, optimized channels, and targeted ad campaigns.',
+      benefits: [
+        { title: 'Video Visibility', description: 'Boost views and subscribers with SEO-friendly titles and thumbnails.' },
+        { title: 'Audience Retention', description: 'Create content that keeps viewers engaged and coming back.' },
+        { title: 'Monetization Support', description: 'Help you reach monetization thresholds and optimize ad revenue.' }
+      ],
+      process: [
+        { step: 1, title: 'Channel Audit', description: 'Evaluate your current content and branding.' },
+        { step: 2, title: 'Content Planning', description: 'Design a video calendar with scripts and visuals.' },
+        { step: 3, title: 'Promotion & Ads', description: 'Run YouTube ads and cross-promote content.' }
+      ],
+      faq: [
+        { question: 'Do you edit videos?', answer: 'Yes, we offer basic editing and thumbnail design services.' },
+        { question: 'Can I run YouTube ads?', answer: 'Yes, we manage YouTube ad campaigns for reach and conversions.' }
+      ],
+      pricing: [
+        { plan: 'Starter Channel', price: '₹14,999', features: ['5 Videos', 'Channel Setup', 'SEO Optimization'] },
+        { plan: 'Growth Channel', price: '₹29,999', features: ['10+ Videos', 'Ad Campaigns', 'Analytics Reports'] }
+      ]
+    }
+  }
+];

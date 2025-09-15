@@ -12,7 +12,6 @@ import imageLoader from '../../../image-loader'
 const Project = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [activeCategory, setActiveCategory] = useState('all')
-  const [selectedClient, setSelectedClient] = useState<string | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(

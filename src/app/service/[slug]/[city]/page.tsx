@@ -1,4 +1,4 @@
-import { marketplaceServices, websiteTypes } from '@/json/services';
+import { marketplaceServices, websiteTypes, digitalMarketingTypes } from '@/json/services';
 import { cityMetadata } from '../../../../json/cities';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -18,8 +18,8 @@ async function normalizeSlug(slug: string): Promise<string> {
 }
 
 // Helper function to get services with Promise
-async function getServices(): Promise<typeof marketplaceServices | typeof websiteTypes> {
-    return Promise.resolve([...marketplaceServices, ...websiteTypes]);
+async function getServices(): Promise<typeof marketplaceServices | typeof websiteTypes | typeof digitalMarketingTypes> {
+    return Promise.resolve([...marketplaceServices, ...websiteTypes, ...digitalMarketingTypes]);
 }
 
 // Helper function to get service data with Promise chain
@@ -30,11 +30,11 @@ async function getServiceData(params: Promise<{ slug: string; city: string }>) {
             normalizeSlug(slug),
             getServices()
         ]);
-        
+
         const servicePromise = Promise.resolve(
             allServices.find(async s => await normalizeSlug(s.slug) === normalizedSlug)
         );
-        
+
         const cityDataPromise = Promise.resolve(
             cityMetadata[city.toLowerCase()]?.services[normalizedSlug]
         );
@@ -58,7 +58,7 @@ export async function generateStaticParams() {
             Promise.resolve(Object.keys(cityMetadata)),
             getServices()
         ]);
-        
+
         return await Promise.all(
             cities.flatMap(city =>
                 allServices.map(async service => ({
@@ -111,6 +111,7 @@ export default async function Page({ params }: PageProps) {
         const { service, cityData } = data;
         const resolvedParams = await params;
         const isWebsite = service.slug.includes('website');
+        const isDigital = service.slug.includes('digital');
 
         const localizedService = await Promise.resolve({
             ...service,
@@ -118,7 +119,7 @@ export default async function Page({ params }: PageProps) {
             details: {
                 ...service.details,
                 overview: cityData.overview,
-                type: isWebsite ? 'website' : 'marketplace'
+                type: isWebsite ? 'website' : isDigital ? 'digital' : 'marketplace'
             }
         });
 
@@ -144,8 +145,8 @@ export default async function Page({ params }: PageProps) {
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
                 />
-                <SubServiceDetail 
-                    service={localizedService} 
+                <SubServiceDetail
+                    service={localizedService}
                     city={resolvedParams.city}
                     key={`${resolvedParams.slug}-${resolvedParams.city}`}
                 />
